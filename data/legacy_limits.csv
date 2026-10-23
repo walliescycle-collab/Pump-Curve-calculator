@@ -1,0 +1,169 @@
+pump,column_mm,depth_m,base_limit_ls,large_drive_limit_ls,hose_mm,hose_length_m,elevation_m,legacy_engine
+BP16M,50,80,3,,80,100,0,F3L912 / small angle drive
+BP16M,50,100,2.7,,80,100,0,F3L912 / small angle drive
+BP16M,50,120,2.5,,80,100,0,F3L912 / small angle drive
+BP16M,65,80,3,,80,100,0,F3L912 / small angle drive
+BP16M,65,100,2.7,,80,100,0,F3L912 / small angle drive
+BP16M,65,120,2.7,,80,100,0,F3L912 / small angle drive
+BP16M,80,80,3,4.1,100,100,0,F3L912 / small angle drive
+BP16M,80,100,2.7,4,100,100,0,F3L912 / small angle drive
+BP16M,80,120,2.7,3.8,100,100,0,F3L912 / small angle drive
+BP16M,100,80,3,4.1,100,100,0,F3L912 / small angle drive
+BP16M,100,100,2.7,4,100,100,0,F3L912 / small angle drive
+BP16M,100,120,2.7,3.8,100,100,0,F3L912 / small angle drive
+GW1302,50,80,3.6,,80,100,0,F3L912 / small angle drive
+GW1302,50,100,3.4,,80,100,0,F3L912 / small angle drive
+GW1302,50,120,2.5,,80,100,0,F3L912 / small angle drive
+GW1302,65,80,4.2,,80,100,0,F3L912 / small angle drive
+GW1302,65,100,4.1,,80,100,0,F3L912 / small angle drive
+GW1302,65,120,3.8,,80,100,0,F3L912 / small angle drive
+GW1302,80,80,4.1,6.1,100,100,0,F3L912 / small angle drive
+GW1302,80,100,4,5.8,100,100,0,F3L912 / small angle drive
+GW1302,80,120,3.7,5.7,100,100,0,F3L912 / small angle drive
+GW1302,100,80,4.1,6.1,100,100,0,F3L912 / small angle drive
+GW1302,100,100,4,5.8,100,100,0,F3L912 / small angle drive
+GW1302,100,120,3.7,5.7,100,100,0,F3L912 / small angle drive
+WA22-2,50,80,3.7,,80,100,0,F3L912 / small angle drive
+WA22-2,50,100,3.6,,80,100,0,F3L912 / small angle drive
+WA22-2,50,120,2.5,,80,100,0,F3L912 / small angle drive
+WA22-2,65,80,4.1,,80,100,0,F3L912 / small angle drive
+WA22-2,65,100,3.8,,80,100,0,F3L912 / small angle drive
+WA22-2,65,120,3.7,,80,100,0,F3L912 / small angle drive
+WA22-2,80,80,4.1,5.8,100,100,0,F3L912 / small angle drive
+WA22-2,80,100,3.8,5.6,100,100,0,F3L912 / small angle drive
+WA22-2,80,120,3.7,5.5,100,100,0,F3L912 / small angle drive
+WA22-2,100,80,4.1,5.8,100,100,0,F3L912 / small angle drive
+WA22-2,100,100,3.8,5.6,100,100,0,F3L912 / small angle drive
+WA22-2,100,120,3.7,5.5,100,100,0,F3L912 / small angle drive
+DW15,50,80,3.7,,80,100,0,F3L912 / small angle drive
+DW15,50,100,3.6,,80,100,0,F3L912 / small angle drive
+DW15,50,120,2.5,,80,100,0,F3L912 / small angle drive
+DW15,65,80,4.1,,80,100,0,F3L912 / small angle drive
+DW15,65,100,3.8,,80,100,0,F3L912 / small angle drive
+DW15,65,120,3.7,,80,100,0,F3L912 / small angle drive
+DW15,80,80,4.1,,100,100,0,F3L912 / small angle drive
+DW15,80,100,3.8,,100,100,0,F3L912 / small angle drive
+DW15,80,120,3.7,,100,100,0,F3L912 / small angle drive
+DW15,100,80,4.1,,100,100,0,F3L912 / small angle drive
+DW15,100,100,3.8,,100,100,0,F3L912 / 60 HP angle drive
+DW15,100,120,3.7,,100,100,0,F3L912 / 60 HP angle drive
+DW2402,50,80,,,80,100,0,
+DW2402,50,100,,,80,100,0,
+DW2402,50,120,,,80,100,0,
+DW2402,65,80,6.1,,80,100,0,F3L912 / small angle drive
+DW2402,65,100,5.5,,80,100,0,F3L912 / small angle drive
+DW2402,65,120,5,,80,100,0,F3L912 / small angle drive
+DW2402,80,80,6.6,,100,100,0,F3L912 / small angle drive
+DW2402,80,100,6.1,,100,100,0,F3L912 / small angle drive
+DW2402,80,120,5.5,,100,100,0,F3L912 / small angle drive
+DW2402,100,80,6.6,,100,100,0,F3L912 / small angle drive
+DW2402,100,100,6.1,,100,100,0,F3L912 / 60 HP angle drive
+DW2402,100,120,5.5,,100,100,0,F3L912 / 60 HP angle drive
+DW2404,50,80,,,80,100,0,
+DW2404,50,100,,,80,100,0,
+DW2404,50,120,,,80,100,0,
+DW2404,65,80,7.2,,80,100,0,F3L912 / small angle drive
+DW2404,65,100,6.9,,80,100,0,F3L912 / small angle drive
+DW2404,65,120,6.3,,80,100,0,F3L912 / small angle drive
+DW2404,80,80,7.2,,100,100,0,F3L912 / small angle drive
+DW2404,80,100,6.9,,100,100,0,F3L912 / 60 HP angle drive
+DW2404,80,120,6.3,,100,100,0,F3L912 / 60 HP angle drive
+DW2404,100,80,7.2,,100,100,0,F3L912 / small angle drive
+DW2404,100,100,6.9,,100,100,0,F3L912 / 60 HP angle drive
+DW2404,100,120,6.3,,100,100,0,F3L912 / 60 HP angle drive
+WA30-2,50,80,,,80,100,0,
+WA30-2,50,100,,,80,100,0,
+WA30-2,50,120,,,80,100,0,
+WA30-2,65,80,5.5,,80,100,0,F3L912 / small angle drive
+WA30-2,65,100,5.2,,80,100,0,F3L912 / small angle drive
+WA30-2,65,120,5.2,,80,100,0,F3L912 / small angle drive
+WA30-2,80,80,5.5,7.7,100,100,0,F3L912 / small angle drive
+WA30-2,80,100,5.5,7.6,100,100,0,F3L912 / small angle drive
+WA30-2,80,120,5.2,7.4,100,100,0,F3L912 / small angle drive
+WA30-2,100,80,5.5,7.7,100,100,0,F3L912 / small angle drive
+WA30-2,100,100,5.5,7.6,100,100,0,F3L912 / small angle drive
+WA30-2,100,120,5.2,7.4,100,100,0,F3L912 / small angle drive
+DW4002,50,80,,,80,100,0,
+DW4002,50,100,,,80,100,0,
+DW4002,50,120,,,80,100,0,
+DW4002,65,80,10,,80,100,0,F3L912 / small angle drive
+DW4002,65,100,9,,80,100,0,F3L912 / small angle drive
+DW4002,65,120,6.1,,80,100,0,F3L912 / small angle drive
+DW4002,80,80,11.5,,100,100,0,F3L912 / 60 HP angle drive
+DW4002,80,100,11.1,,100,100,0,F3L912 / 60 HP angle drive
+DW4002,80,120,9.7,,100,100,0,F3L912 / 60 HP angle drive
+DW4002,100,80,12,,100,100,0,F3L912 / small angle drive
+DW4002,100,100,11.8,,100,100,0,F3L912 / 60 HP angle drive
+DW4002,100,120,11.1,,100,100,0,F3L912 / 60 HP angle drive
+WA50-2,50,80,,,80,100,0,
+WA50-2,50,100,,,80,100,0,
+WA50-2,50,120,,,80,100,0,
+WA50-2,65,80,8.3,,80,100,0,F3L912 / small angle drive
+WA50-2,65,100,8,,80,100,0,F3L912 / small angle drive
+WA50-2,65,120,6.9,,80,100,0,F3L912 / small angle drive
+WA50-2,80,80,9,11.11,100,100,0,F3L912 / small angle drive
+WA50-2,80,100,8.3,11.1,100,100,0,F3L912 / 60 HP angle drive
+WA50-2,80,120,7.6,10.41,100,100,0,F3L912 / 60 HP angle drive
+WA50-2,100,80,9.7,11.8,100,100,0,F4L912 / 60 HP angle drive
+WA50-2,100,100,9,11.11,100,100,0,F4L912 / 60 HP angle drive
+WA50-2,100,120,8.3,10.41,100,100,0,F4L912 / 60 HP angle drive
+BP50M,50,80,,,80,100,0,
+BP50M,50,100,,,80,100,0,
+BP50M,50,120,,,80,100,0,
+BP50M,65,80,9,,80,100,0,F3L912 / small angle drive
+BP50M,65,100,8.3,,80,100,0,F3L912 / small angle drive
+BP50M,65,120,6.9,,80,100,0,F3L912 / small angle drive
+BP50M,80,80,9,11.38,100,100,0,F3L912 / small angle drive
+BP50M,80,100,8.3,10.41,100,100,0,F3L912 / 60 HP angle drive
+BP50M,80,120,7.6,9.72,100,100,0,F3L912 / 60 HP angle drive
+BP50M,100,80,9.7,11.8,100,100,0,F4L912 / 60 HP angle drive
+BP50M,100,100,9,11.11,100,100,0,F4L912 / 60 HP angle drive
+BP50M,100,120,8.3,10.41,100,100,0,F4L912 / 60 HP angle drive
+WA90-2,50,80,,,80,100,0,
+WA90-2,50,100,,,80,100,0,
+WA90-2,50,120,,,80,100,0,
+WA90-2,65,80,,,80,100,0,
+WA90-2,65,100,,,80,100,0,
+WA90-2,65,120,,,80,100,0,
+WA90-2,80,80,15,,100,100,0,F4L912 / 60 HP angle drive
+WA90-2,80,100,15,,100,100,0,F5L912 / 60 HP angle drive
+WA90-2,80,120,12.5,,100,100,0,F5L912 / 60 HP angle drive
+WA90-2,100,80,22.2,,100,100,0,F5L912 / 60 HP angle drive
+WA90-2,100,100,22.2,,100,100,0,F5L912 / 60 HP angle drive
+WA90-2,100,120,19.4,,100,100,0,F5L912 / 60 HP angle drive
+GW9002,50,80,,,80,100,0,
+GW9002,50,100,,,80,100,0,
+GW9002,50,120,,,80,100,0,
+GW9002,65,80,,,80,100,0,
+GW9002,65,100,,,80,100,0,
+GW9002,65,120,,,80,100,0,
+GW9002,80,80,15,,100,100,0,F4L912 / 60 HP angle drive
+GW9002,80,100,15,,100,100,0,F5L912 / 60 HP angle drive
+GW9002,80,120,12.5,,100,100,0,F5L912 / 60 HP angle drive
+GW9002,100,80,23.6,,100,100,0,F5L912 / 60 HP angle drive
+GW9002,100,100,22.2,,100,100,0,F5L912 / 60 HP angle drive
+GW9002,100,120,19.4,,100,100,0,F5L912 / 60 HP angle drive
+GW9602,50,80,,,80,100,0,
+GW9602,50,100,,,80,100,0,
+GW9602,50,120,,,80,100,0,
+GW9602,65,80,,,80,100,0,
+GW9602,65,100,,,80,100,0,
+GW9602,65,120,,,80,100,0,
+GW9602,80,80,,,100,100,0,
+GW9602,80,100,,,100,100,0,
+GW9602,80,120,,,100,100,0,
+GW9602,100,80,25,,100,100,0,V6 Deutz / model unverified
+GW9602,100,100,25,,100,100,0,V6 Deutz / model unverified
+GW9602,100,120,18.33,,100,100,0,V6 Deutz / model unverified
+WA110-2,50,80,,,80,100,0,
+WA110-2,50,100,,,80,100,0,
+WA110-2,50,120,,,80,100,0,
+WA110-2,65,80,,,80,100,0,
+WA110-2,65,100,,,80,100,0,
+WA110-2,65,120,,,80,100,0,
+WA110-2,80,80,15,,100,100,0,F5L912 / 60 HP angle drive
+WA110-2,80,100,15,,100,100,0,F5L912 / 60 HP angle drive
+WA110-2,80,120,12.5,,100,100,0,F6L912 / 60 HP angle drive
+WA110-2,100,80,27,,100,100,0,F5L912 / 60 HP angle drive
+WA110-2,100,100,25,,100,100,0,F5L912 / 60 HP angle drive
+WA110-2,100,120,22,,100,100,0,F6L912 / 60 HP angle drive

@@ -1,0 +1,1048 @@
+pump,kind,rpm,head_m,value,unit,source,quality
+BP16M,flow,500,0,5.3,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,500,30,4.8,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,500,60,4.4,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,500,90,4.0,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,500,120,3.6,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,500,150,3.3,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,700,0,7.6,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,700,30,7.1,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,700,60,6.6,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,700,90,6.2,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,700,120,5.8,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,700,150,5.4,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,900,0,9.9,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,900,30,9.5,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,900,60,9,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,900,90,8.5,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,900,120,8.1,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,900,150,7.7,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,1100,0,12.1,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,1100,30,11.7,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,1100,60,11.3,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,1100,90,10.8,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,1100,120,10.3,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,1100,150,9.9,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,1300,0,14.4,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,1300,30,13.9,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,1300,60,13.5,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,1300,90,13,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,1300,120,12.6,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,1300,150,12.2,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,1500,0,16.6,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,1500,30,16.1,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,1500,60,15.8,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,1500,90,15.5,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,1500,120,15,m3/h,sources/bp16m.png,graphical approximation
+BP16M,flow,1500,150,14.7,m3/h,sources/bp16m.png,graphical approximation
+BP16M,power,500,0,0.6,kW,sources/bp16m.png,graphical approximation
+BP16M,power,500,150,2.6,kW,sources/bp16m.png,graphical approximation
+BP16M,power,700,0,0.8,kW,sources/bp16m.png,graphical approximation
+BP16M,power,700,150,3.6,kW,sources/bp16m.png,graphical approximation
+BP16M,power,900,0,1,kW,sources/bp16m.png,graphical approximation
+BP16M,power,900,150,4.7,kW,sources/bp16m.png,graphical approximation
+BP16M,power,1100,0,1.3,kW,sources/bp16m.png,graphical approximation
+BP16M,power,1100,150,5.8,kW,sources/bp16m.png,graphical approximation
+BP16M,power,1300,0,1.6,kW,sources/bp16m.png,graphical approximation
+BP16M,power,1300,150,6.8,kW,sources/bp16m.png,graphical approximation
+BP16M,power,1500,0,1.8,kW,sources/bp16m.png,graphical approximation
+BP16M,power,1500,150,7.9,kW,sources/bp16m.png,graphical approximation
+BP23M,flow,500,0,7,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,500,30,6.7,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,500,60,6.4,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,500,90,6,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,500,120,5.2,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,500,150,4.3,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,750,0,10.9,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,750,30,10.6,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,750,60,10.2,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,750,90,9.7,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,750,120,8.8,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,750,150,7.7,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,1000,0,15,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,1000,30,14.7,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,1000,60,14.3,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,1000,90,13.9,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,1000,120,13.2,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,1000,150,12,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,1250,0,19,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,1250,30,18.7,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,1250,60,18.3,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,1250,90,17.8,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,1250,120,17,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,1250,150,16,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,1500,0,23,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,1500,30,22.9,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,1500,60,22.5,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,1500,90,22,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,1500,120,21.3,m3/h,sources/bp23m.png,graphical approximation
+BP23M,flow,1500,150,20.5,m3/h,sources/bp23m.png,graphical approximation
+BP23M,power,500,15,0.7,kW,sources/bp23m.png,graphical approximation
+BP23M,power,500,150,3.3,kW,sources/bp23m.png,graphical approximation
+BP23M,power,750,15,1.2,kW,sources/bp23m.png,graphical approximation
+BP23M,power,750,150,5.2,kW,sources/bp23m.png,graphical approximation
+BP23M,power,1000,15,1.7,kW,sources/bp23m.png,graphical approximation
+BP23M,power,1000,150,7,kW,sources/bp23m.png,graphical approximation
+BP23M,power,1250,15,2.3,kW,sources/bp23m.png,graphical approximation
+BP23M,power,1250,150,9,kW,sources/bp23m.png,graphical approximation
+BP23M,power,1500,15,2.7,kW,sources/bp23m.png,graphical approximation
+BP23M,power,1500,150,11,kW,sources/bp23m.png,graphical approximation
+GW1302,flow,500,0,7,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,500,30,6.7,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,500,60,6.4,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,500,90,6,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,500,120,5.2,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,500,150,4.3,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,750,0,10.9,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,750,30,10.6,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,750,60,10.2,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,750,90,9.7,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,750,120,8.8,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,750,150,7.7,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,1000,0,15,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,1000,30,14.7,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,1000,60,14.3,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,1000,90,13.9,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,1000,120,13.2,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,1000,150,12,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,1250,0,19,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,1250,30,18.7,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,1250,60,18.3,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,1250,90,17.8,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,1250,120,17,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,1250,150,16,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,1500,0,23,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,1500,30,22.9,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,1500,60,22.5,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,1500,90,22,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,1500,120,21.3,m3/h,sources/gw1302.png,graphical approximation
+GW1302,flow,1500,150,20.5,m3/h,sources/gw1302.png,graphical approximation
+GW1302,power,500,15,0.7,kW,sources/gw1302.png,graphical approximation
+GW1302,power,500,150,3.3,kW,sources/gw1302.png,graphical approximation
+GW1302,power,750,15,1.2,kW,sources/gw1302.png,graphical approximation
+GW1302,power,750,150,5.2,kW,sources/gw1302.png,graphical approximation
+GW1302,power,1000,15,1.7,kW,sources/gw1302.png,graphical approximation
+GW1302,power,1000,150,7,kW,sources/gw1302.png,graphical approximation
+GW1302,power,1250,15,2.3,kW,sources/gw1302.png,graphical approximation
+GW1302,power,1250,150,9,kW,sources/gw1302.png,graphical approximation
+GW1302,power,1500,15,2.7,kW,sources/gw1302.png,graphical approximation
+GW1302,power,1500,150,11,kW,sources/gw1302.png,graphical approximation
+BP40M,flow,500,0,12.2,m3/h,sources/bp40m.png,graphical approximation
+BP40M,flow,500,75,8.9,m3/h,sources/bp40m.png,graphical approximation
+BP40M,flow,500,150,4.5,m3/h,sources/bp40m.png,graphical approximation
+BP40M,flow,700,0,17,m3/h,sources/bp40m.png,graphical approximation
+BP40M,flow,700,75,12.9,m3/h,sources/bp40m.png,graphical approximation
+BP40M,flow,700,150,8.8,m3/h,sources/bp40m.png,graphical approximation
+BP40M,flow,900,0,22,m3/h,sources/bp40m.png,graphical approximation
+BP40M,flow,900,75,18.4,m3/h,sources/bp40m.png,graphical approximation
+BP40M,flow,900,150,14.5,m3/h,sources/bp40m.png,graphical approximation
+BP40M,flow,1100,0,27,m3/h,sources/bp40m.png,graphical approximation
+BP40M,flow,1100,75,23.2,m3/h,sources/bp40m.png,graphical approximation
+BP40M,flow,1100,150,19,m3/h,sources/bp40m.png,graphical approximation
+BP40M,flow,1300,0,32.1,m3/h,sources/bp40m.png,graphical approximation
+BP40M,flow,1300,75,28.4,m3/h,sources/bp40m.png,graphical approximation
+BP40M,flow,1300,150,24.3,m3/h,sources/bp40m.png,graphical approximation
+BP40M,flow,1450,0,36,m3/h,sources/bp40m.png,graphical approximation
+BP40M,flow,1450,75,32.2,m3/h,sources/bp40m.png,graphical approximation
+BP40M,flow,1450,150,28.6,m3/h,sources/bp40m.png,graphical approximation
+BP40M,power,500,0,0.5,kW,sources/bp40m.png,graphical approximation
+BP40M,power,500,150,6.1,kW,sources/bp40m.png,graphical approximation
+BP40M,power,700,0,0.8,kW,sources/bp40m.png,graphical approximation
+BP40M,power,700,150,8.6,kW,sources/bp40m.png,graphical approximation
+BP40M,power,900,0,1.2,kW,sources/bp40m.png,graphical approximation
+BP40M,power,900,150,11,kW,sources/bp40m.png,graphical approximation
+BP40M,power,1100,0,1.5,kW,sources/bp40m.png,graphical approximation
+BP40M,power,1100,150,13.6,kW,sources/bp40m.png,graphical approximation
+BP40M,power,1300,0,1.9,kW,sources/bp40m.png,graphical approximation
+BP40M,power,1300,150,16,kW,sources/bp40m.png,graphical approximation
+BP40M,power,1450,0,2.1,kW,sources/bp40m.png,graphical approximation
+BP40M,power,1450,150,18.3,kW,sources/bp40m.png,graphical approximation
+BP50M,flow,700,0,26,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,700,30,23.8,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,700,60,21.7,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,700,90,19.4,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,700,120,16.7,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,700,150,13.7,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,900,0,34,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,900,30,31.7,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,900,60,29.7,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,900,90,27.2,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,900,120,24.1,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,900,150,22,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,1100,0,42,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,1100,30,39.6,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,1100,60,37.2,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,1100,90,34.7,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,1100,120,31.9,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,1100,150,29,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,1300,0,50,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,1300,30,47.2,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,1300,60,45,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,1300,90,42.5,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,1300,120,40,m3/h,sources/bp50m.png,graphical approximation
+BP50M,flow,1300,150,37,m3/h,sources/bp50m.png,graphical approximation
+BP50M,power,700,0,1,kW,sources/bp50m.png,graphical approximation
+BP50M,power,700,150,12.5,kW,sources/bp50m.png,graphical approximation
+BP50M,power,900,0,1.3,kW,sources/bp50m.png,graphical approximation
+BP50M,power,900,150,16,kW,sources/bp50m.png,graphical approximation
+BP50M,power,1100,0,1.6,kW,sources/bp50m.png,graphical approximation
+BP50M,power,1100,150,19.5,kW,sources/bp50m.png,graphical approximation
+BP50M,power,1300,0,2,kW,sources/bp50m.png,graphical approximation
+BP50M,power,1300,150,23,kW,sources/bp50m.png,graphical approximation
+BP50H,flow,500,0,19.2,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,500,75,18.7,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,500,150,17.3,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,500,225,15,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,500,300,11.9,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,700,0,27,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,700,75,26.5,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,700,150,25,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,700,225,22.8,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,700,300,19.7,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,900,0,34.7,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,900,75,34.2,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,900,150,33,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,900,225,30.7,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,900,300,27.3,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,1100,0,42.3,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,1100,75,41.8,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,1100,150,40.5,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,1100,225,38.4,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,1100,300,35,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,1300,0,50,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,1300,75,49.5,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,1300,150,48.3,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,1300,225,46,m3/h,sources/bp50h.png,graphical approximation
+BP50H,flow,1300,300,42.8,m3/h,sources/bp50h.png,graphical approximation
+BP50H,power,500,0,1.5,kW,sources/bp50h.png,graphical approximation
+BP50H,power,500,300,18.7,kW,sources/bp50h.png,graphical approximation
+BP50H,power,700,0,2,kW,sources/bp50h.png,graphical approximation
+BP50H,power,700,300,26,kW,sources/bp50h.png,graphical approximation
+BP50H,power,900,0,2.7,kW,sources/bp50h.png,graphical approximation
+BP50H,power,900,300,33.8,kW,sources/bp50h.png,graphical approximation
+BP50H,power,1100,0,3.2,kW,sources/bp50h.png,graphical approximation
+BP50H,power,1100,300,41,kW,sources/bp50h.png,graphical approximation
+BP50H,power,1300,0,3.8,kW,sources/bp50h.png,graphical approximation
+BP50H,power,1300,300,48.5,kW,sources/bp50h.png,graphical approximation
+BP65M,flow,300,0,17.2,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,300,30,16.6,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,300,60,15.5,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,300,90,13,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,300,120,9.8,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,300,150,6.2,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,500,0,28.5,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,500,30,27.5,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,500,60,26.3,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,500,90,23.7,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,500,120,20,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,500,150,15.7,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,700,0,40,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,700,30,39,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,700,60,38,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,700,90,35.7,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,700,120,32,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,700,150,29,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,900,0,51.2,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,900,30,50,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,900,60,49,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,900,90,46.8,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,900,120,43.5,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,900,150,40,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,1100,0,62.5,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,1100,30,61.4,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,1100,60,60.3,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,1100,90,58,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,1100,120,55,m3/h,sources/bp65m.png,graphical approximation
+BP65M,flow,1100,150,52,m3/h,sources/bp65m.png,graphical approximation
+BP65M,power,300,0,0.7,kW,sources/bp65m.png,graphical approximation
+BP65M,power,300,150,9,kW,sources/bp65m.png,graphical approximation
+BP65M,power,500,0,1.2,kW,sources/bp65m.png,graphical approximation
+BP65M,power,500,150,14,kW,sources/bp65m.png,graphical approximation
+BP65M,power,700,0,1.9,kW,sources/bp65m.png,graphical approximation
+BP65M,power,700,150,19,kW,sources/bp65m.png,graphical approximation
+BP65M,power,900,0,2.4,kW,sources/bp65m.png,graphical approximation
+BP65M,power,900,150,24.6,kW,sources/bp65m.png,graphical approximation
+BP65M,power,1100,0,2.9,kW,sources/bp65m.png,graphical approximation
+BP65M,power,1100,150,29.8,kW,sources/bp65m.png,graphical approximation
+BP90M,flow,250,0,21,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,250,30,20.2,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,250,60,19,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,250,90,17.7,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,250,120,15,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,250,150,12,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,500,0,44,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,500,30,43,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,500,60,41.8,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,500,90,39.3,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,500,120,36,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,500,150,32,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,750,0,69.5,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,750,30,68.5,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,750,60,67,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,750,90,65,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,750,120,62.8,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,750,150,60,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,1000,0,92.5,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,1000,30,91.5,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,1000,60,90.5,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,1000,90,89,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,1000,120,86.5,m3/h,sources/bp90m.png,graphical approximation
+BP90M,flow,1000,150,84,m3/h,sources/bp90m.png,graphical approximation
+BP90M,power,250,0,1.8,kW,sources/bp90m.png,graphical approximation
+BP90M,power,250,150,9.8,kW,sources/bp90m.png,graphical approximation
+BP90M,power,500,0,2.2,kW,sources/bp90m.png,graphical approximation
+BP90M,power,500,150,22,kW,sources/bp90m.png,graphical approximation
+BP90M,power,750,0,2.8,kW,sources/bp90m.png,graphical approximation
+BP90M,power,750,150,34,kW,sources/bp90m.png,graphical approximation
+BP90M,power,1000,0,3.4,kW,sources/bp90m.png,graphical approximation
+BP90M,power,1000,150,47,kW,sources/bp90m.png,graphical approximation
+GW9002,flow,250,0,21,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,250,30,20.2,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,250,60,19,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,250,90,17.7,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,250,120,15,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,250,150,12,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,500,0,44,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,500,30,43,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,500,60,41.8,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,500,90,39.3,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,500,120,36,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,500,150,32,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,750,0,69.5,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,750,30,68.5,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,750,60,67,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,750,90,65,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,750,120,62.8,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,750,150,60,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,1000,0,92.5,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,1000,30,91.5,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,1000,60,90.5,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,1000,90,89,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,1000,120,86.5,m3/h,sources/gw9002.png,graphical approximation
+GW9002,flow,1000,150,84,m3/h,sources/gw9002.png,graphical approximation
+GW9002,power,250,0,1.8,kW,sources/gw9002.png,graphical approximation
+GW9002,power,250,150,9.8,kW,sources/gw9002.png,graphical approximation
+GW9002,power,500,0,2.2,kW,sources/gw9002.png,graphical approximation
+GW9002,power,500,150,22,kW,sources/gw9002.png,graphical approximation
+GW9002,power,750,0,2.8,kW,sources/gw9002.png,graphical approximation
+GW9002,power,750,150,34,kW,sources/gw9002.png,graphical approximation
+GW9002,power,1000,0,3.4,kW,sources/gw9002.png,graphical approximation
+GW9002,power,1000,150,47,kW,sources/gw9002.png,graphical approximation
+GW25002,flow,250,0,57,m3/h,sources/gw25002.png,graphical approximation
+GW25002,flow,250,30,54,m3/h,sources/gw25002.png,graphical approximation
+GW25002,flow,250,60,50,m3/h,sources/gw25002.png,graphical approximation
+GW25002,flow,250,90,44,m3/h,sources/gw25002.png,graphical approximation
+GW25002,flow,250,120,34,m3/h,sources/gw25002.png,graphical approximation
+GW25002,flow,250,150,20,m3/h,sources/gw25002.png,graphical approximation
+GW25002,flow,500,0,122,m3/h,sources/gw25002.png,graphical approximation
+GW25002,flow,500,30,120,m3/h,sources/gw25002.png,graphical approximation
+GW25002,flow,500,60,116,m3/h,sources/gw25002.png,graphical approximation
+GW25002,flow,500,90,108,m3/h,sources/gw25002.png,graphical approximation
+GW25002,flow,500,120,97,m3/h,sources/gw25002.png,graphical approximation
+GW25002,flow,500,150,85,m3/h,sources/gw25002.png,graphical approximation
+GW25002,flow,750,0,185,m3/h,sources/gw25002.png,graphical approximation
+GW25002,flow,750,30,182,m3/h,sources/gw25002.png,graphical approximation
+GW25002,flow,750,60,178,m3/h,sources/gw25002.png,graphical approximation
+GW25002,flow,750,90,172,m3/h,sources/gw25002.png,graphical approximation
+GW25002,flow,750,120,162,m3/h,sources/gw25002.png,graphical approximation
+GW25002,flow,750,150,150,m3/h,sources/gw25002.png,graphical approximation
+GW25002,power,250,10,7,kW,sources/gw25002.png,graphical approximation
+GW25002,power,250,150,38,kW,sources/gw25002.png,graphical approximation
+GW25002,power,500,10,12,kW,sources/gw25002.png,graphical approximation
+GW25002,power,500,150,69,kW,sources/gw25002.png,graphical approximation
+GW25002,power,750,10,18,kW,sources/gw25002.png,graphical approximation
+GW25002,power,750,150,97,kW,sources/gw25002.png,graphical approximation
+GW1306,flow,200,0,2.5,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,200,100,2.4,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,200,200,2.3,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,200,300,2,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,200,400,1.7,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,400,0,5,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,400,100,4.9,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,400,200,4.7,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,400,300,4.4,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,400,400,4,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,600,0,7.7,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,600,100,7.6,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,600,200,7.4,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,600,300,7.2,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,600,400,7,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,800,0,10.5,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,800,100,10.3,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,800,200,10.1,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,800,300,10,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,800,400,9.7,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,1000,0,13.2,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,1000,100,13,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,1000,200,12.9,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,1000,300,12.8,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,1000,400,12.6,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,1200,0,15.6,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,1200,100,15.4,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,1200,200,15.3,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,1200,300,15.1,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,flow,1200,400,15,m3/h,sources/gw1306.jpg,graphical approximation
+GW1306,power,200,40,1,kW,sources/gw1306.jpg,graphical approximation
+GW1306,power,200,400,5,kW,sources/gw1306.jpg,graphical approximation
+GW1306,power,400,40,1.8,kW,sources/gw1306.jpg,graphical approximation
+GW1306,power,400,400,8.5,kW,sources/gw1306.jpg,graphical approximation
+GW1306,power,600,40,2.6,kW,sources/gw1306.jpg,graphical approximation
+GW1306,power,600,400,12.2,kW,sources/gw1306.jpg,graphical approximation
+GW1306,power,800,40,3.5,kW,sources/gw1306.jpg,graphical approximation
+GW1306,power,800,400,16,kW,sources/gw1306.jpg,graphical approximation
+GW1306,power,1000,40,4.2,kW,sources/gw1306.jpg,graphical approximation
+GW1306,power,1000,400,20,kW,sources/gw1306.jpg,graphical approximation
+GW1306,power,1200,40,5,kW,sources/gw1306.jpg,graphical approximation
+GW1306,power,1200,400,24,kW,sources/gw1306.jpg,graphical approximation
+GW2404,flow,500,0,10.6,m3/h,sources/gw2404.jpg,graphical approximation
+GW2404,flow,500,150,10.2,m3/h,sources/gw2404.jpg,graphical approximation
+GW2404,flow,500,300,9.5,m3/h,sources/gw2404.jpg,graphical approximation
+GW2404,flow,700,0,15.9,m3/h,sources/gw2404.jpg,graphical approximation
+GW2404,flow,700,150,15.3,m3/h,sources/gw2404.jpg,graphical approximation
+GW2404,flow,700,300,14.5,m3/h,sources/gw2404.jpg,graphical approximation
+GW2404,flow,900,0,21,m3/h,sources/gw2404.jpg,graphical approximation
+GW2404,flow,900,150,20.3,m3/h,sources/gw2404.jpg,graphical approximation
+GW2404,flow,900,300,19.5,m3/h,sources/gw2404.jpg,graphical approximation
+GW2404,flow,1100,0,26.4,m3/h,sources/gw2404.jpg,graphical approximation
+GW2404,flow,1100,150,25.7,m3/h,sources/gw2404.jpg,graphical approximation
+GW2404,flow,1100,300,25,m3/h,sources/gw2404.jpg,graphical approximation
+GW2404,flow,1300,0,31.5,m3/h,sources/gw2404.jpg,graphical approximation
+GW2404,flow,1300,150,30.8,m3/h,sources/gw2404.jpg,graphical approximation
+GW2404,flow,1300,300,30,m3/h,sources/gw2404.jpg,graphical approximation
+GW2404,flow,1500,0,36.5,m3/h,sources/gw2404.jpg,graphical approximation
+GW2404,flow,1500,150,35.8,m3/h,sources/gw2404.jpg,graphical approximation
+GW2404,flow,1500,300,35,m3/h,sources/gw2404.jpg,graphical approximation
+GW2404,power,500,30,1.5,kW,sources/gw2404.jpg,graphical approximation
+GW2404,power,500,300,12.5,kW,sources/gw2404.jpg,graphical approximation
+GW2404,power,700,30,2.3,kW,sources/gw2404.jpg,graphical approximation
+GW2404,power,700,300,18,kW,sources/gw2404.jpg,graphical approximation
+GW2404,power,900,30,3,kW,sources/gw2404.jpg,graphical approximation
+GW2404,power,900,300,23.5,kW,sources/gw2404.jpg,graphical approximation
+GW2404,power,1100,30,3.7,kW,sources/gw2404.jpg,graphical approximation
+GW2404,power,1100,300,29,kW,sources/gw2404.jpg,graphical approximation
+GW2404,power,1300,30,4.5,kW,sources/gw2404.jpg,graphical approximation
+GW2404,power,1300,300,34.5,kW,sources/gw2404.jpg,graphical approximation
+GW2404,power,1500,30,5.2,kW,sources/gw2404.jpg,graphical approximation
+GW2404,power,1500,300,40,kW,sources/gw2404.jpg,graphical approximation
+GW5406,flow,500,0,29,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,500,120,27,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,500,240,26,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,500,360,22,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,500,450,18,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,700,0,40,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,700,120,39,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,700,240,36,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,700,360,33,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,700,450,29,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,900,0,52,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,900,120,51,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,900,240,48,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,900,360,45,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,900,450,41,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,1100,0,62,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,1100,120,61,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,1100,240,59,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,1100,360,56,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,1100,450,52,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,1200,0,67,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,1200,120,66,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,1200,240,64,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,1200,360,61,m3/h,sources/gw5406.jpg,provisional source
+GW5406,flow,1200,450,57,m3/h,sources/gw5406.jpg,provisional source
+GW5406,power,500,30,12,kW,sources/gw5406.jpg,provisional source
+GW5406,power,500,450,38,kW,sources/gw5406.jpg,provisional source
+GW5406,power,700,30,15,kW,sources/gw5406.jpg,provisional source
+GW5406,power,700,450,55,kW,sources/gw5406.jpg,provisional source
+GW5406,power,900,30,17,kW,sources/gw5406.jpg,provisional source
+GW5406,power,900,450,72,kW,sources/gw5406.jpg,provisional source
+GW5406,power,1100,30,19,kW,sources/gw5406.jpg,provisional source
+GW5406,power,1100,450,88,kW,sources/gw5406.jpg,provisional source
+GW5406,power,1200,30,20,kW,sources/gw5406.jpg,provisional source
+GW5406,power,1200,450,96,kW,sources/gw5406.jpg,provisional source
+GW9602,flow,250,0,24,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,250,30,23,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,250,60,22,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,250,90,20,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,250,120,17,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,250,150,14,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,500,0,55,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,500,30,54,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,500,60,52,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,500,90,49,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,500,120,45,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,500,150,41,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,750,0,80,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,750,30,79,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,750,60,78,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,750,90,75,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,750,120,71,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,750,150,66,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,960,0,105,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,960,30,103,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,960,60,101,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,960,90,99,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,960,120,95,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,flow,960,150,90,m3/h,sources/gw9602.jpg,graphical approximation
+GW9602,power,250,10,2,kW,sources/gw9602.jpg,graphical approximation
+GW9602,power,250,150,9,kW,sources/gw9602.jpg,graphical approximation
+GW9602,power,500,10,6,kW,sources/gw9602.jpg,graphical approximation
+GW9602,power,500,150,23,kW,sources/gw9602.jpg,graphical approximation
+GW9602,power,750,10,9,kW,sources/gw9602.jpg,graphical approximation
+GW9602,power,750,150,38,kW,sources/gw9602.jpg,graphical approximation
+GW9602,power,960,10,12,kW,sources/gw9602.jpg,graphical approximation
+GW9602,power,960,150,51,kW,sources/gw9602.jpg,graphical approximation
+WA16-2,flow,500,0,5.3,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,500,30,4.8,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,500,60,4.4,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,500,90,4.0,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,500,120,3.6,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,500,150,3.3,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,700,0,7.6,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,700,30,7.1,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,700,60,6.6,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,700,90,6.2,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,700,120,5.8,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,700,150,5.4,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,900,0,9.9,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,900,30,9.5,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,900,60,9,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,900,90,8.5,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,900,120,8.1,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,900,150,7.7,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,1100,0,12.1,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,1100,30,11.7,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,1100,60,11.3,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,1100,90,10.8,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,1100,120,10.3,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,1100,150,9.9,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,1300,0,14.4,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,1300,30,13.9,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,1300,60,13.5,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,1300,90,13,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,1300,120,12.6,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,1300,150,12.2,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,1500,0,16.6,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,1500,30,16.1,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,1500,60,15.8,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,1500,90,15.5,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,1500,120,15,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,flow,1500,150,14.7,m3/h,sources/wasa_13.png,graphical approximation
+WA16-2,power,500,0,0.6,kW,sources/wasa_13.png,graphical approximation
+WA16-2,power,500,150,2.6,kW,sources/wasa_13.png,graphical approximation
+WA16-2,power,700,0,0.8,kW,sources/wasa_13.png,graphical approximation
+WA16-2,power,700,150,3.6,kW,sources/wasa_13.png,graphical approximation
+WA16-2,power,900,0,1,kW,sources/wasa_13.png,graphical approximation
+WA16-2,power,900,150,4.7,kW,sources/wasa_13.png,graphical approximation
+WA16-2,power,1100,0,1.3,kW,sources/wasa_13.png,graphical approximation
+WA16-2,power,1100,150,5.8,kW,sources/wasa_13.png,graphical approximation
+WA16-2,power,1300,0,1.6,kW,sources/wasa_13.png,graphical approximation
+WA16-2,power,1300,150,6.8,kW,sources/wasa_13.png,graphical approximation
+WA16-2,power,1500,0,1.8,kW,sources/wasa_13.png,graphical approximation
+WA16-2,power,1500,150,7.9,kW,sources/wasa_13.png,graphical approximation
+WA22-1,flow,900,0,14,m3/h,sources/wasa_14.png,graphical approximation
+WA22-1,flow,900,37.5,12.5,m3/h,sources/wasa_14.png,graphical approximation
+WA22-1,flow,900,75,11,m3/h,sources/wasa_14.png,graphical approximation
+WA22-1,flow,1100,0,17,m3/h,sources/wasa_14.png,graphical approximation
+WA22-1,flow,1100,37.5,15.5,m3/h,sources/wasa_14.png,graphical approximation
+WA22-1,flow,1100,75,14,m3/h,sources/wasa_14.png,graphical approximation
+WA22-1,flow,1300,0,19.5,m3/h,sources/wasa_14.png,graphical approximation
+WA22-1,flow,1300,37.5,18.3,m3/h,sources/wasa_14.png,graphical approximation
+WA22-1,flow,1300,75,17,m3/h,sources/wasa_14.png,graphical approximation
+WA22-1,flow,1500,0,23,m3/h,sources/wasa_14.png,graphical approximation
+WA22-1,flow,1500,37.5,21.5,m3/h,sources/wasa_14.png,graphical approximation
+WA22-1,flow,1500,75,20,m3/h,sources/wasa_14.png,graphical approximation
+WA22-1,power,900,0,0.2,kW,sources/wasa_14.png,graphical approximation
+WA22-1,power,900,75,4.5,kW,sources/wasa_14.png,graphical approximation
+WA22-1,power,1100,0,0.4,kW,sources/wasa_14.png,graphical approximation
+WA22-1,power,1100,75,5.6,kW,sources/wasa_14.png,graphical approximation
+WA22-1,power,1300,0,0.6,kW,sources/wasa_14.png,graphical approximation
+WA22-1,power,1300,75,6.7,kW,sources/wasa_14.png,graphical approximation
+WA22-1,power,1500,0,0.9,kW,sources/wasa_14.png,graphical approximation
+WA22-1,power,1500,75,7.8,kW,sources/wasa_14.png,graphical approximation
+WA22-2,flow,900,0,14.5,m3/h,sources/wasa_15.png,graphical approximation
+WA22-2,flow,900,75,12.5,m3/h,sources/wasa_15.png,graphical approximation
+WA22-2,flow,900,150,10.5,m3/h,sources/wasa_15.png,graphical approximation
+WA22-2,flow,1100,0,17.5,m3/h,sources/wasa_15.png,graphical approximation
+WA22-2,flow,1100,75,15.5,m3/h,sources/wasa_15.png,graphical approximation
+WA22-2,flow,1100,150,13.5,m3/h,sources/wasa_15.png,graphical approximation
+WA22-2,flow,1300,0,20.5,m3/h,sources/wasa_15.png,graphical approximation
+WA22-2,flow,1300,75,18.5,m3/h,sources/wasa_15.png,graphical approximation
+WA22-2,flow,1300,150,16.3,m3/h,sources/wasa_15.png,graphical approximation
+WA22-2,flow,1500,0,23,m3/h,sources/wasa_15.png,graphical approximation
+WA22-2,flow,1500,75,21.3,m3/h,sources/wasa_15.png,graphical approximation
+WA22-2,flow,1500,150,19.8,m3/h,sources/wasa_15.png,graphical approximation
+WA22-2,power,900,0,1,kW,sources/wasa_15.png,graphical approximation
+WA22-2,power,900,150,8,kW,sources/wasa_15.png,graphical approximation
+WA22-2,power,1100,0,1.4,kW,sources/wasa_15.png,graphical approximation
+WA22-2,power,1100,150,10.6,kW,sources/wasa_15.png,graphical approximation
+WA22-2,power,1300,0,1.8,kW,sources/wasa_15.png,graphical approximation
+WA22-2,power,1300,150,13.3,kW,sources/wasa_15.png,graphical approximation
+WA22-2,power,1500,0,2.3,kW,sources/wasa_15.png,graphical approximation
+WA22-2,power,1500,150,16,kW,sources/wasa_15.png,graphical approximation
+WA22-3,flow,900,0,14.5,m3/h,sources/wasa_16.png,graphical approximation
+WA22-3,flow,900,125,12.5,m3/h,sources/wasa_16.png,graphical approximation
+WA22-3,flow,900,250,10.5,m3/h,sources/wasa_16.png,graphical approximation
+WA22-3,flow,1100,0,17.5,m3/h,sources/wasa_16.png,graphical approximation
+WA22-3,flow,1100,125,15.5,m3/h,sources/wasa_16.png,graphical approximation
+WA22-3,flow,1100,250,13.5,m3/h,sources/wasa_16.png,graphical approximation
+WA22-3,flow,1300,0,20.5,m3/h,sources/wasa_16.png,graphical approximation
+WA22-3,flow,1300,125,18.5,m3/h,sources/wasa_16.png,graphical approximation
+WA22-3,flow,1300,250,16.3,m3/h,sources/wasa_16.png,graphical approximation
+WA22-3,flow,1500,0,23,m3/h,sources/wasa_16.png,graphical approximation
+WA22-3,flow,1500,125,21.3,m3/h,sources/wasa_16.png,graphical approximation
+WA22-3,flow,1500,250,19.8,m3/h,sources/wasa_16.png,graphical approximation
+WA22-3,power,900,0,1,kW,sources/wasa_16.png,graphical approximation
+WA22-3,power,900,250,8,kW,sources/wasa_16.png,graphical approximation
+WA22-3,power,1100,0,1.4,kW,sources/wasa_16.png,graphical approximation
+WA22-3,power,1100,250,10.6,kW,sources/wasa_16.png,graphical approximation
+WA22-3,power,1300,0,1.8,kW,sources/wasa_16.png,graphical approximation
+WA22-3,power,1300,250,13.3,kW,sources/wasa_16.png,graphical approximation
+WA22-3,power,1500,0,2.3,kW,sources/wasa_16.png,graphical approximation
+WA22-3,power,1500,250,16,kW,sources/wasa_16.png,graphical approximation
+WA30-2,flow,700,0,14.7,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,700,30,13.8,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,700,60,13.4,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,700,90,12.7,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,700,120,11.7,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,700,150,11,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,900,0,18.7,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,900,30,18,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,900,60,17.5,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,900,90,16.5,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,900,120,15.8,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,900,150,15,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,1100,0,22.7,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,1100,30,22,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,1100,60,21.2,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,1100,90,20.5,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,1100,120,19.6,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,1100,150,19,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,1300,0,26.5,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,1300,30,25.9,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,1300,60,25.3,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,1300,90,24.6,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,1300,120,23.9,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,1300,150,23,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,1500,0,30.3,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,1500,30,29.7,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,1500,60,29.1,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,1500,90,28.5,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,1500,120,27.8,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,flow,1500,150,27,m3/h,sources/wasa_17.png,graphical approximation
+WA30-2,power,700,0,1,kW,sources/wasa_17.png,graphical approximation
+WA30-2,power,700,150,7.5,kW,sources/wasa_17.png,graphical approximation
+WA30-2,power,900,0,1.5,kW,sources/wasa_17.png,graphical approximation
+WA30-2,power,900,150,9.7,kW,sources/wasa_17.png,graphical approximation
+WA30-2,power,1100,0,2,kW,sources/wasa_17.png,graphical approximation
+WA30-2,power,1100,150,11.8,kW,sources/wasa_17.png,graphical approximation
+WA30-2,power,1300,0,2.5,kW,sources/wasa_17.png,graphical approximation
+WA30-2,power,1300,150,13.9,kW,sources/wasa_17.png,graphical approximation
+WA30-2,power,1500,0,3.1,kW,sources/wasa_17.png,graphical approximation
+WA30-2,power,1500,150,16,kW,sources/wasa_17.png,graphical approximation
+WA30-4,flow,700,0,13.8,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,700,75,13.2,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,700,150,11.5,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,700,225,8.8,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,700,300,5.8,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,900,0,18,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,900,75,17.3,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,900,150,15.6,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,900,225,13,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,900,300,10.4,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,1100,0,22.3,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,1100,75,21.6,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,1100,150,19.8,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,1100,225,17.3,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,1100,300,14.6,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,1300,0,26.8,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,1300,75,26.1,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,1300,150,24.2,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,1300,225,21.7,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,1300,300,18.7,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,1500,0,30.6,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,1500,75,30,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,1500,150,28.3,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,1500,225,25.8,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,flow,1500,300,22.8,m3/h,sources/wasa_18.png,graphical approximation
+WA30-4,power,700,0,0.4,kW,sources/wasa_18.png,graphical approximation
+WA30-4,power,700,300,13,kW,sources/wasa_18.png,graphical approximation
+WA30-4,power,900,0,1.2,kW,sources/wasa_18.png,graphical approximation
+WA30-4,power,900,300,17.5,kW,sources/wasa_18.png,graphical approximation
+WA30-4,power,1100,0,2,kW,sources/wasa_18.png,graphical approximation
+WA30-4,power,1100,300,22,kW,sources/wasa_18.png,graphical approximation
+WA30-4,power,1300,0,2.8,kW,sources/wasa_18.png,graphical approximation
+WA30-4,power,1300,300,26.5,kW,sources/wasa_18.png,graphical approximation
+WA30-4,power,1500,0,3.7,kW,sources/wasa_18.png,graphical approximation
+WA30-4,power,1500,300,30.5,kW,sources/wasa_18.png,graphical approximation
+WA50-2,flow,700,0,26,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,700,30,23.8,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,700,60,21.7,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,700,90,19.4,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,700,120,16.7,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,700,150,13.7,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,900,0,34,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,900,30,31.7,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,900,60,29.7,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,900,90,27.2,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,900,120,24.1,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,900,150,22,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,1100,0,42,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,1100,30,39.6,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,1100,60,37.2,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,1100,90,34.7,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,1100,120,31.9,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,1100,150,29,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,1300,0,50,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,1300,30,47.2,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,1300,60,45,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,1300,90,42.5,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,1300,120,40,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,flow,1300,150,37,m3/h,sources/wasa_19.png,graphical approximation
+WA50-2,power,700,0,1,kW,sources/wasa_19.png,graphical approximation
+WA50-2,power,700,150,12.5,kW,sources/wasa_19.png,graphical approximation
+WA50-2,power,900,0,1.3,kW,sources/wasa_19.png,graphical approximation
+WA50-2,power,900,150,16,kW,sources/wasa_19.png,graphical approximation
+WA50-2,power,1100,0,1.6,kW,sources/wasa_19.png,graphical approximation
+WA50-2,power,1100,150,19.5,kW,sources/wasa_19.png,graphical approximation
+WA50-2,power,1300,0,2,kW,sources/wasa_19.png,graphical approximation
+WA50-2,power,1300,150,23,kW,sources/wasa_19.png,graphical approximation
+WA50-4,flow,200,0,9,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,200,75,8.5,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,200,150,6.3,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,200,225,2.5,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,200,300,-2,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,400,0,18,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,400,75,17.3,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,400,150,15.5,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,400,225,12,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,400,300,7,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,600,0,27,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,600,75,26,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,600,150,23.8,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,600,225,19.3,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,600,300,13,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,800,0,35.5,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,800,75,34.5,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,800,150,32,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,800,225,27.5,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,800,300,22,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,1000,0,43.8,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,1000,75,42.5,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,1000,150,40,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,1000,225,35,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,1000,300,29,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,1200,0,51.5,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,1200,75,50,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,1200,150,47.2,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,1200,225,42.8,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,flow,1200,300,36.5,m3/h,sources/wasa_20.png,graphical approximation
+WA50-4,power,200,20,2.5,kW,sources/wasa_20.png,graphical approximation
+WA50-4,power,200,300,8,kW,sources/wasa_20.png,graphical approximation
+WA50-4,power,400,20,3.2,kW,sources/wasa_20.png,graphical approximation
+WA50-4,power,400,300,17,kW,sources/wasa_20.png,graphical approximation
+WA50-4,power,600,20,4,kW,sources/wasa_20.png,graphical approximation
+WA50-4,power,600,300,25.5,kW,sources/wasa_20.png,graphical approximation
+WA50-4,power,800,20,4.8,kW,sources/wasa_20.png,graphical approximation
+WA50-4,power,800,300,34,kW,sources/wasa_20.png,graphical approximation
+WA50-4,power,1000,20,5.7,kW,sources/wasa_20.png,graphical approximation
+WA50-4,power,1000,300,43,kW,sources/wasa_20.png,graphical approximation
+WA50-4,power,1200,20,6.5,kW,sources/wasa_20.png,graphical approximation
+WA50-4,power,1200,300,52,kW,sources/wasa_20.png,graphical approximation
+WA65-2,flow,300,0,17.2,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,300,30,16.6,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,300,60,15.5,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,300,90,13,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,300,120,9.8,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,300,150,6.2,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,500,0,28.5,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,500,30,27.5,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,500,60,26.3,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,500,90,23.7,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,500,120,20,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,500,150,15.7,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,700,0,40,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,700,30,39,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,700,60,38,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,700,90,35.7,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,700,120,32,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,700,150,29,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,900,0,51.2,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,900,30,50,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,900,60,49,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,900,90,46.8,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,900,120,43.5,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,900,150,40,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,1100,0,62.5,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,1100,30,61.4,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,1100,60,60.3,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,1100,90,58,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,1100,120,55,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,flow,1100,150,52,m3/h,sources/wasa_21.png,graphical approximation
+WA65-2,power,300,0,0.7,kW,sources/wasa_21.png,graphical approximation
+WA65-2,power,300,150,9,kW,sources/wasa_21.png,graphical approximation
+WA65-2,power,500,0,1.2,kW,sources/wasa_21.png,graphical approximation
+WA65-2,power,500,150,14,kW,sources/wasa_21.png,graphical approximation
+WA65-2,power,700,0,1.9,kW,sources/wasa_21.png,graphical approximation
+WA65-2,power,700,150,19,kW,sources/wasa_21.png,graphical approximation
+WA65-2,power,900,0,2.4,kW,sources/wasa_21.png,graphical approximation
+WA65-2,power,900,150,24.6,kW,sources/wasa_21.png,graphical approximation
+WA65-2,power,1100,0,2.9,kW,sources/wasa_21.png,graphical approximation
+WA65-2,power,1100,150,29.8,kW,sources/wasa_21.png,graphical approximation
+WA90-2,flow,250,0,21,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,250,30,20.2,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,250,60,19,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,250,90,17.7,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,250,120,15,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,250,150,12,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,500,0,44,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,500,30,43,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,500,60,41.8,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,500,90,39.3,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,500,120,36,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,500,150,32,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,750,0,69.5,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,750,30,68.5,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,750,60,67,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,750,90,65,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,750,120,62.8,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,750,150,60,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,1000,0,92.5,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,1000,30,91.5,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,1000,60,90.5,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,1000,90,89,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,1000,120,86.5,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,flow,1000,150,84,m3/h,sources/wasa_22.png,graphical approximation
+WA90-2,power,250,0,1.8,kW,sources/wasa_22.png,graphical approximation
+WA90-2,power,250,150,9.8,kW,sources/wasa_22.png,graphical approximation
+WA90-2,power,500,0,2.2,kW,sources/wasa_22.png,graphical approximation
+WA90-2,power,500,150,22,kW,sources/wasa_22.png,graphical approximation
+WA90-2,power,750,0,2.8,kW,sources/wasa_22.png,graphical approximation
+WA90-2,power,750,150,34,kW,sources/wasa_22.png,graphical approximation
+WA90-2,power,1000,0,3.4,kW,sources/wasa_22.png,graphical approximation
+WA90-2,power,1000,150,47,kW,sources/wasa_22.png,graphical approximation
+WA110-2,flow,250,0,24,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,250,30,23,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,250,60,21.8,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,250,90,20.2,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,250,120,18,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,250,150,15,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,500,0,56,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,500,30,55,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,500,60,53.3,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,500,90,50,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,500,120,46,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,500,150,41,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,750,0,80,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,750,30,80,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,750,60,79,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,750,90,76,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,750,120,72,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,750,150,67,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,960,0,105,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,960,30,104,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,960,60,102,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,960,90,99,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,960,120,95,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,960,150,90,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,1100,0,110,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,1100,30,109,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,1100,60,107.5,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,1100,90,105,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,1100,120,101,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,flow,1100,150,95,m3/h,sources/wasa_23.png,graphical approximation
+WA110-2,power,250,0,2,kW,sources/wasa_23.png,graphical approximation
+WA110-2,power,250,150,10,kW,sources/wasa_23.png,graphical approximation
+WA110-2,power,500,0,4,kW,sources/wasa_23.png,graphical approximation
+WA110-2,power,500,150,23,kW,sources/wasa_23.png,graphical approximation
+WA110-2,power,750,0,6,kW,sources/wasa_23.png,graphical approximation
+WA110-2,power,750,150,38,kW,sources/wasa_23.png,graphical approximation
+WA110-2,power,960,0,8,kW,sources/wasa_23.png,graphical approximation
+WA110-2,power,960,150,51,kW,sources/wasa_23.png,graphical approximation
+DW1304,flow,800,50,6.8,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,800,100,6.6,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,800,150,6.2,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,800,200,5.7,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,800,250,5,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,800,300,4.2,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,960,50,8.3,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,960,100,8.1,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,960,150,7.7,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,960,200,7.2,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,960,250,6.7,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,960,300,6,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,1000,50,8.7,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,1000,100,8.4,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,1000,150,8,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,1000,200,7.5,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,1000,250,6.9,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,1000,300,6.2,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,1200,50,10.3,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,1200,100,10.2,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,1200,150,9.9,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,1200,200,9.5,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,1200,250,9,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,1200,300,8.4,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,1450,50,12.6,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,1450,100,12.3,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,1450,150,12,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,1450,200,11.5,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,1450,250,11,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,flow,1450,300,10.3,m3/h,sources/dw1304.jpg,published numerical table
+DW1304,power,800,50,1.54,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,800,100,2.48,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,800,150,3.42,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,800,200,4.36,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,800,250,5.3,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,800,300,6.24,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,960,50,1.95,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,960,100,3,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,960,150,4.05,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,960,200,5.1,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,960,250,6.15,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,960,300,7.2,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,1000,50,2.03,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,1000,100,3.12,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,1000,150,4.22,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,1000,200,5.31,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,1000,250,6.41,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,1000,300,7.5,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,1200,50,2.41,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,1200,100,3.76,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,1200,150,5.1,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,1200,200,6.45,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,1200,250,7.79,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,1200,300,9.14,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,1450,50,2.99,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,1450,100,4.71,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,1450,150,6.43,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,1450,200,8.15,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,1450,250,9.87,kW,sources/dw1304.jpg,published numerical table
+DW1304,power,1450,300,11.59,kW,sources/dw1304.jpg,published numerical table
+DW2402,flow,600,30,13.4,m3/h,sources/dw2402.jpg,published numerical table
+DW2402,flow,600,60,12.3,m3/h,sources/dw2402.jpg,published numerical table
+DW2402,flow,600,90,10.8,m3/h,sources/dw2402.jpg,published numerical table
+DW2402,flow,600,120,9.1,m3/h,sources/dw2402.jpg,published numerical table
+DW2402,flow,600,150,7,m3/h,sources/dw2402.jpg,published numerical table
+DW2402,flow,800,30,18.1,m3/h,sources/dw2402.jpg,published numerical table
+DW2402,flow,800,60,17,m3/h,sources/dw2402.jpg,published numerical table
+DW2402,flow,800,90,15.5,m3/h,sources/dw2402.jpg,published numerical table
+DW2402,flow,800,120,13.5,m3/h,sources/dw2402.jpg,published numerical table
+DW2402,flow,800,150,11.2,m3/h,sources/dw2402.jpg,published numerical table
+DW2402,flow,1000,30,22.8,m3/h,sources/dw2402.jpg,published numerical table
+DW2402,flow,1000,60,21.6,m3/h,sources/dw2402.jpg,published numerical table
+DW2402,flow,1000,90,20,m3/h,sources/dw2402.jpg,published numerical table
+DW2402,flow,1000,120,18,m3/h,sources/dw2402.jpg,published numerical table
+DW2402,flow,1000,150,15.5,m3/h,sources/dw2402.jpg,published numerical table
+DW2402,flow,1200,30,27.4,m3/h,sources/dw2402.jpg,published numerical table
+DW2402,flow,1200,60,26.2,m3/h,sources/dw2402.jpg,published numerical table
+DW2402,flow,1200,90,24.7,m3/h,sources/dw2402.jpg,published numerical table
+DW2402,flow,1200,120,22.9,m3/h,sources/dw2402.jpg,published numerical table
+DW2402,flow,1200,150,20.7,m3/h,sources/dw2402.jpg,published numerical table
+DW2402,power,600,30,1.87,kW,sources/dw2402.jpg,published numerical table
+DW2402,power,600,60,2.95,kW,sources/dw2402.jpg,published numerical table
+DW2402,power,600,90,4.04,kW,sources/dw2402.jpg,published numerical table
+DW2402,power,600,120,5.12,kW,sources/dw2402.jpg,published numerical table
+DW2402,power,600,150,6.2,kW,sources/dw2402.jpg,published numerical table
+DW2402,power,800,30,2.5,kW,sources/dw2402.jpg,published numerical table
+DW2402,power,800,60,4,kW,sources/dw2402.jpg,published numerical table
+DW2402,power,800,90,5.5,kW,sources/dw2402.jpg,published numerical table
+DW2402,power,800,120,7,kW,sources/dw2402.jpg,published numerical table
+DW2402,power,800,150,8.5,kW,sources/dw2402.jpg,published numerical table
+DW2402,power,1000,30,3.14,kW,sources/dw2402.jpg,published numerical table
+DW2402,power,1000,60,5,kW,sources/dw2402.jpg,published numerical table
+DW2402,power,1000,90,6.86,kW,sources/dw2402.jpg,published numerical table
+DW2402,power,1000,120,8.71,kW,sources/dw2402.jpg,published numerical table
+DW2402,power,1000,150,10.57,kW,sources/dw2402.jpg,published numerical table
+DW2402,power,1200,30,3.9,kW,sources/dw2402.jpg,published numerical table
+DW2402,power,1200,60,6.05,kW,sources/dw2402.jpg,published numerical table
+DW2402,power,1200,90,8.2,kW,sources/dw2402.jpg,published numerical table
+DW2402,power,1200,120,10.35,kW,sources/dw2402.jpg,published numerical table
+DW2402,power,1200,150,12.5,kW,sources/dw2402.jpg,published numerical table
+DW2404,flow,600,60,13.7,m3/h,sources/dw2404.jpg,published numerical table
+DW2404,flow,600,120,12.9,m3/h,sources/dw2404.jpg,published numerical table
+DW2404,flow,600,180,11.5,m3/h,sources/dw2404.jpg,published numerical table
+DW2404,flow,600,240,9.7,m3/h,sources/dw2404.jpg,published numerical table
+DW2404,flow,600,300,7.3,m3/h,sources/dw2404.jpg,published numerical table
+DW2404,flow,800,60,18.5,m3/h,sources/dw2404.jpg,published numerical table
+DW2404,flow,800,120,17.8,m3/h,sources/dw2404.jpg,published numerical table
+DW2404,flow,800,180,16.8,m3/h,sources/dw2404.jpg,published numerical table
+DW2404,flow,800,240,15.6,m3/h,sources/dw2404.jpg,published numerical table
+DW2404,flow,800,300,14.2,m3/h,sources/dw2404.jpg,published numerical table
+DW2404,flow,1000,60,23.3,m3/h,sources/dw2404.jpg,published numerical table
+DW2404,flow,1000,120,22.7,m3/h,sources/dw2404.jpg,published numerical table
+DW2404,flow,1000,180,21.9,m3/h,sources/dw2404.jpg,published numerical table
+DW2404,flow,1000,240,20.8,m3/h,sources/dw2404.jpg,published numerical table
+DW2404,flow,1000,300,19.4,m3/h,sources/dw2404.jpg,published numerical table
+DW2404,flow,1200,60,27.8,m3/h,sources/dw2404.jpg,published numerical table
+DW2404,flow,1200,120,27.2,m3/h,sources/dw2404.jpg,published numerical table
+DW2404,flow,1200,180,26.3,m3/h,sources/dw2404.jpg,published numerical table
+DW2404,flow,1200,240,25.2,m3/h,sources/dw2404.jpg,published numerical table
+DW2404,flow,1200,300,23.8,m3/h,sources/dw2404.jpg,published numerical table
+DW2404,power,600,60,3.6,kW,sources/dw2404.jpg,published numerical table
+DW2404,power,600,120,5.4,kW,sources/dw2404.jpg,published numerical table
+DW2404,power,600,180,7.2,kW,sources/dw2404.jpg,published numerical table
+DW2404,power,600,240,9,kW,sources/dw2404.jpg,published numerical table
+DW2404,power,600,300,10.8,kW,sources/dw2404.jpg,published numerical table
+DW2404,power,800,60,4.51,kW,sources/dw2404.jpg,published numerical table
+DW2404,power,800,120,7.22,kW,sources/dw2404.jpg,published numerical table
+DW2404,power,800,180,9.92,kW,sources/dw2404.jpg,published numerical table
+DW2404,power,800,240,12.63,kW,sources/dw2404.jpg,published numerical table
+DW2404,power,800,300,15.34,kW,sources/dw2404.jpg,published numerical table
+DW2404,power,1000,60,5.85,kW,sources/dw2404.jpg,published numerical table
+DW2404,power,1000,120,8.97,kW,sources/dw2404.jpg,published numerical table
+DW2404,power,1000,180,12.08,kW,sources/dw2404.jpg,published numerical table
+DW2404,power,1000,240,15.2,kW,sources/dw2404.jpg,published numerical table
+DW2404,power,1000,300,18.31,kW,sources/dw2404.jpg,published numerical table
+DW2404,power,1200,60,7.53,kW,sources/dw2404.jpg,published numerical table
+DW2404,power,1200,120,11.27,kW,sources/dw2404.jpg,published numerical table
+DW2404,power,1200,180,15.02,kW,sources/dw2404.jpg,published numerical table
+DW2404,power,1200,240,18.76,kW,sources/dw2404.jpg,published numerical table
+DW2404,power,1200,300,22.51,kW,sources/dw2404.jpg,published numerical table
+DW4002,flow,600,25,25,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,600,50,24.1,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,600,75,22.8,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,600,100,20.9,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,600,125,18.5,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,600,150,15.7,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,800,25,33.3,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,800,50,32.4,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,800,75,31.2,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,800,100,29.7,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,800,125,28,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,800,150,26.1,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,1000,25,41.6,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,1000,50,40.6,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,1000,75,39.2,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,1000,100,37.5,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,1000,125,35.3,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,1000,150,32.8,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,1200,25,50.2,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,1200,50,49.3,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,1200,75,48.1,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,1200,100,46.4,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,1200,125,44.4,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,flow,1200,150,42,m3/h,sources/dw4002.jpg,published numerical table
+DW4002,power,600,25,3.32,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,600,50,4.79,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,600,75,6.26,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,600,100,7.73,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,600,125,9.2,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,600,150,10.67,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,800,25,4.56,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,800,50,6.57,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,800,75,8.47,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,800,100,10.38,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,800,125,12.29,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,800,150,14.2,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,1000,25,5.64,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,1000,50,8.08,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,1000,75,10.51,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,1000,100,12.95,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,1000,125,15.39,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,1000,150,17.83,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,1200,25,6.76,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,1200,50,9.83,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,1200,75,12.89,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,1200,100,15.95,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,1200,125,19.01,kW,sources/dw4002.jpg,published numerical table
+DW4002,power,1200,150,22.08,kW,sources/dw4002.jpg,published numerical table

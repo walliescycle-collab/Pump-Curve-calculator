@@ -1,0 +1,397 @@
+AB PUMPS STREAMLIT PROJECT — VS CODE / CODING ASSISTANT HANDOVER
+Prepared: 23 October 2026
+
+HOW TO USE THIS FILE
+Place this text file in the extracted ab_pumps project folder. Open that folder
+in VS Code, select the project's Python environment, and attach this file to
+your coding assistant's chat. Suggested first prompt:
+
+“Read AB_Pumps_VS_Code_Context.txt and README.md, inspect the existing code and
+tests, then help me continue editing this project. Preserve the confirmed
+engineering assumptions and identify any proposed changes to them explicitly.
+Do not replace the real pump data with example curves.”
+
+This is a handover snapshot, not a substitute for inspecting the current files.
+The user has not yet specified the next code change. Do not assume that all
+suggestions below have been requested or implemented.
+
+1. PROJECT PURPOSE AND CURRENT DELIVERABLE
+
+Build a public Streamlit application for AB Pumps to plan shaft-driven borehole
+test-pump installations. Operators calculate total head, select pumps that can
+meet every test step, inspect pump/system curves, estimate diesel engine size,
+and compare measured pump performance with the expected curve.
+
+The user requested a Jupyter-based workflow. The agreed implementation is an
+editable Jupyter notebook plus a deployable Streamlit app using the SAME Python
+calculation module. Do not duplicate the equations in the two interfaces.
+
+Delivered archive: AB_Pumps_Streamlit_Project.zip (about 12.6 MB), containing
+the ab_pumps folder. This context file is a separate handover; it was not inside
+the original archive. Keep the complete extracted folder, including sources/.
+There is no known GitHub repository or published app for this pump planner yet.
+Another AB Pumps Streamlit project discussed elsewhere is a separate project.
+
+2. CONFIRMED USER REQUIREMENTS — PRESERVE THESE
+
+- Metric units: yield L/s, head/length metres, diameter mm, absorbed power kW.
+- Four head terms: pumping lift, column friction, discharge elevation difference,
+  layflat friction.
+- Default conservative pumping lift equals pump installation depth: water may
+  be drawn down to the pump. Do not require separate lift entry by default.
+- Each test step nevertheless has its own pumping water level. An optional
+  mode uses these individual levels instead of full installation depth.
+- Column friction always acts over full installed column length.
+- Discharge elevation means height difference between borehole and hose outlet.
+  Optional two-coordinate terrain lookup is wanted; manual entry must work.
+- Ignore fittings, outlet pressure and discharge velocity head.
+- Consider only shaft-driven columns, nominal 40, 50, 65, 80, 100 and 150 mm.
+- Support flow calculations up to 60 L/s and flag excessive velocities.
+- PVC layflat nominal 50, 65, 80, 100, 150 and 200 mm; desired chart range 1–60 L/s.
+- Default four test steps; allow up to 24. Both entered yield and entered
+  pump-shaft RPM modes are required.
+- “Suitable” means a pump meets ALL requested steps within its head, speed,
+  power and borehole limits. Explain rejected and conditional results.
+- Pump-shaft RPM only as the operator's pump speed. Diesel drive only.
+- Recommend Deutz FXL912-series engine size for the installation, including
+  maximum expected yield and the peak power requirement over all steps.
+- Use old AB quick-reference table as historical pump/column/engine guidance.
+- Include WASA models WA16-2 upwards from the supplied catalogue.
+- Retain handwritten DW aliases from the supplied sheets.
+- For GW9602 use a 150 m maximum head. Keep GW5406 provisional sheet as supplied.
+- Include an expected-versus-actual RPM performance check at measured yield/head.
+- Include notebook, deployable app.py, Excel/CSV downloads and curve downloads.
+
+3. PROJECT FILE MAP
+
+app.py
+  Streamlit interface, sidebar installation and drive settings, step editor,
+  comparisons, terrain lookup, field check and downloads. Four tabs:
+  1 Plan & select; 2 Curves & diesel; 3 Field curve check; 4 Friction & sources.
+
+hydraulics.py
+  Shared calculation engine, independent of Streamlit. Contains Installation
+  and Drive dataclasses, friction functions, bounded pump interpolation,
+  yield/RPM solvers, diesel sizing and field comparison.
+
+plots.py
+  Plotly pump/system overlays and friction plots. Each different water level
+  produces its own system curve when individual-water-level mode is enabled.
+
+build_data.py
+  Reproducible transcription of graph knots and source table values; generates
+  the files in data/. It contains engineering data, not automatic image OCR.
+  Correct source readings here as well as regenerating the output data, so a
+  future rebuild does not erase corrections.
+
+data/pumps.json
+  29 pump records, source metadata, limits, flow curves, absorbed-power curves,
+  known clearances, nominal columns and other source specifications.
+data/curve_points.csv
+  Flat export of the pump curve knots for inspection.
+data/column_friction.json
+  Digitized CEMO column friction points.
+data/layflat_friction.json
+  Rain-Flo layflat friction table values in source units.
+data/legacy_limits.csv
+  AB historical installation-depth/column/yield limits and engine guidance.
+
+sources/
+  Original or retrieved pump PDFs, rendered charts, DW source photographs,
+  WASA catalogue and page renders, CEMO friction image, AB quick-reference image,
+  Deutz power-pack PDF and layflat reference PDF. Preserve original sources.
+
+AB_Pumps_Installation_Planner.ipynb
+  Executed example workbook, 18 cells including 9 code cells. Imports the shared
+  modules. Covers inventory, installation, all-pump comparison, selected pump,
+  curves, diesel candidates, 24 RPM steps, field check and optional exports.
+  Example: BP40M, depth 80 m, 80 mm column, 100 m of 100 mm hose, +3 m elevation,
+  yields 3/4/5/5.5 L/s. Optional exports are disabled by default.
+
+tests/test_hydraulics.py and tests/test_app.py
+  Calculation tests and Streamlit AppTest interaction checks.
+README.md
+  User setup, methodology, limitations, sources and deployment guidance.
+requirements.txt / requirements-dev.txt
+  Runtime and notebook/test dependencies.
+.streamlit/config.toml
+  Teal/navy/light-grey theme. No official logo was added to this build.
+.gitignore
+  Excludes environments, caches, notebook checkpoints and Streamlit secrets.
+
+4. ENGINEERING METHODS IMPLEMENTED
+
+4.1 Total head
+H(Q) = lift + column_loss(Q) + discharge_elevation + layflat_loss(Q).
+Full-depth mode: lift = installation depth.
+Individual-level mode: lift = that step's pumping water depth below ground.
+Individual water depth cannot exceed installed pump depth.
+No well drawdown-versus-yield model is fitted; water levels are supplied inputs.
+Negative discharge elevation is allowed; gravity/siphon regimes are flagged.
+
+4.2 Column friction
+40/50/65/80/100 mm curves are manually read representative points from the
+supplied CEMO rising main / shaft & bearing friction chart. Source flow is
+interpreted as m3/h, loss as metres per 100 m. The 40/50 mm lower panel follows
+the sheet's m3/h convention; verify this interpretation if better documentation
+becomes available.
+Convert L/s to m3/h by multiplying by 3.6.
+Interpolate positive points in log(flow)-log(loss) space.
+Multiply loss per 100 m by installed length / 100.
+At zero flow, friction loss is zero.
+Outside chart bounds, extend from the nearest endpoint using Q^2; flag this.
+
+150 mm has NO supplied chart. It is an annular scaling estimate from 100 mm:
+  d1=0.100 m, s1=0.025 m; d2=0.150 m, s2=0.040 m
+  multiplier = ((d1^2-s1^2)/(d2^2-s2^2))^2 * (d1-s1)/(d2-s2)
+This assumes equal friction factors and does not reproduce all bearing details.
+Keep the estimate label; do not describe it as a measured CEMO curve.
+
+Velocity uses nominal annular area, not verified internal diameters. Assumed
+shaft diameters for 40/50/65/80/100/150 mm columns are 13/16/19/22/25/40 mm.
+Default velocity review threshold = 3 m/s, not a universal permissible limit.
+
+4.3 Layflat friction
+Uses Rain-Flo table for 2/2.5/3/4/6 inch layflat, mapped to nominal metric
+50/65/80/100/150 mm. Actual inflated internal diameter can differ.
+US gpm -> L/s: multiply by 3.785411784/60.
+Source psi per 100 ft -> metres per 100 m:
+  multiply by [6894.757293/(1000*9.80665)] * [100/30.48].
+Log-log interpolation between table points.
+Outside table flow bounds, use endpoint-anchored Q^1.85 extension and flag it.
+200 mm is estimated from 150 mm by multiplying loss by (150/200)^4.87.
+Multiply rate by actual hose route length / 100.
+These extensions and the 200 mm curve are estimates, not measured hose data.
+
+4.4 Pump curves
+These are positive-displacement pump sources. DO NOT substitute centrifugal
+affinity laws Q~N, H~N^2, P~N^3 for the source-based interpolation.
+Graphical sheets were manually read into representative head/flow/power knots;
+they were not automatically traced pixel by pixel. Numerical NOV/DW tables
+were transcribed. Source quality is retained in each pump record.
+At a given RPM: piecewise linear interpolation along head values.
+Between two RPM curves: linear interpolation between their values at that head.
+Use bounded head AND RPM domains. Exact published speeds use only their own
+head domain. Do not silently extrapolate pump flow or power.
+Flow curves store m3/h; calculation/UI flow returns L/s. Power is absorbed kW.
+GW9602 maximum head is explicitly 150 m per user instruction.
+
+Yield mode: calculate system head at requested Q, then interpolate required RPM
+at that head. Check source, drive, bore and power limits across all steps.
+RPM mode: solve pump/system intersection with scipy.optimize.brentq over the
+valid common domain, within 0–60 L/s. No valid root means an explained failure.
+
+4.5 Engine and drive
+Pump absorbed kW is interpolated from source power curves, not inferred solely
+from hydraulic power. Hydraulic kW is separately Q(m3/s)*1000*g*H/1000.
+Required engine kW = (pump kW + extra mechanical kW) / transmission efficiency
+                     * diesel sizing factor.
+Available engine kW = continuous output at engine RPM * availability fraction.
+Choose smallest passing F3L912/F4L912/F5L912/F6L912 across the maximum requirement
+of ALL steps. Missing power for any step means no complete engine recommendation.
+Continuous table caps at 2300 engine RPM: 36/49/61/74 kW respectively.
+Intermediate engine output is approximate chart interpolation from 1000–2300 RPM.
+F4L912 lower tabulated 49 kW cap takes precedence over the higher graph endpoint.
+
+Defaults: pump drive speed limit 1100 RPM; angle-drive rating 60 HP (~44.74 kW);
+transmission efficiency 0.90; extra shaft loss 0 kW; diesel factor 1.33;
+available-power fraction 0.90; engine speed 2300 RPM.
+Engine RPM and pump RPM are DIFFERENT. Suitable gearing is required; no complete
+gearbox/torque-transmission design is performed. User must enter actual drive
+limits, particularly a small drive whose kW rating is absent from the old chart.
+The 90% fraction is a user assumption, not an automatic altitude correction.
+Running torque is 9550*(pump kW+extra kW)/pump RPM. Published minimum starting
+torque is displayed when available; starting-torque adequacy is not certified.
+
+4.6 Field performance comparison
+Given measured Q, total differential head and actual pump-shaft RPM:
+  expected RPM = curve RPM needed to deliver measured Q at measured head;
+  RPM difference % = 100*(actual/expected - 1);
+  expected Q at actual RPM = interpolated curve flow at measured head;
+  flow difference % = 100*(measured/expected Q - 1).
+Default comparison tolerance is 10%, user adjustable. Higher actual RPM than
+expected implies below-curve performance for the stated Q/H. This is a comparison,
+not a diagnosis of wear, leakage, bad instrumentation or water-level error.
+Field head may be entered directly or calculated using observed pumping level.
+Comparison tolerance never increases allowable operating limits.
+
+5. SOURCE INVENTORY AND IMPORTANT QUALIFICATIONS
+
+29 pumps: Mono BP16M, BP23M, BP40M, BP50M, BP50H, BP65M, BP90M;
+Orbit GW1302, GW1306, GW2404, GW5406, GW9002, GW9602, GW25002;
+WASA WA16-2, WA22-1, WA22-2, WA22-3, WA30-2, WA30-4, WA50-2,
+WA50-4, WA65-2, WA90-2, WA110-2;
+NOV/DW DW1304, DW2402, DW2404, DW4002.
+Verify names against current pumps.json before making changes.
+
+Handwritten aliases: NOV640A -> DW1304; NOV720A -> DW2402;
+NOV740A -> DW2404; NOV820 -> DW4002.
+DW15 is in the old quick chart but has no supplied performance curve; do not
+invent its curve or silently alias it to another pump.
+WA110-2 flow reaches 1100 RPM; power data end at 960 RPM. Preserve missing-power
+qualification above that speed.
+GW5406 is a provisional source.
+Many minimum bore diameters are unknown. Outside diameter does not establish
+installation clearance. Unknown minimum bore remains conditional.
+Known NOV minima used: DW1304 100 mm, DW2402/DW2404 127 mm, DW4002 145 mm;
+GW9602 200 mm and GW25002 250 mm. Verify against sources if editing.
+
+Numerical table corrections already applied after zooming source photographs:
+- DW2402: at 1200 RPM / 120 m, Q=22.9 m3/h, power=10.35 kW.
+- DW4002: at 1200 RPM / 100 m, Q=46.4 m3/h, power=15.95 kW.
+- DW2404: at 1200 RPM / 60 m, power=7.53 kW; at 120 m, 11.27 kW;
+  at 240 m, Q=25.2 m3/h. Earlier conversational readings were incorrect.
+Do not reintroduce those earlier transcription errors.
+
+Manual arithmetic error: its stated 26 m/100 m * 60 m equals 15.6 m, not 43 m.
+Using its stated terms gives 60+15.6+18+3=96.6 m, not 124 m. This only corrects
+the example arithmetic; app friction sources need not reproduce its exact rates.
+
+Legacy chart: 80/100/120 m depths, nominal 50/65/80/100 mm columns; generally
+1100 pump RPM unless pump max is lower. 50/65 mm columns assume 100 m of 80 mm
+hose; 80/100 mm columns assume 100 m of 100 mm hose. Zero discharge elevation.
+Parenthesised yields refer to larger drives. Colour-coded engines are historical
+guidance, not universal calculated limits. “V6 Deutz” has no verified model;
+do not assume it means F6L912. Exact matching installations get a cross-check.
+Manual's final-step 10% overrun wording is not used to pass an exceeded limit.
+
+Manufacturer/reference links:
+https://franklin-electric.co.za/products/mono-bp-range/
+https://franklin-electric.co.za/products/orbit-gw-range/
+https://www.deutz.com.au/wp-content/uploads/2016/09/DEUTZ-DRIVE-The-New-Power-Pack-Series.pdf
+https://www.rainfloirrigation.com/irrigation/charts-layouts/friction-loss-chart
+https://www.opentopodata.org/api/
+Local sources are the working evidence; do not replace them with guessed data.
+
+6. API AND STATE CONVENTIONS
+
+Read exact signatures in hydraulics.py before editing. Main entry points:
+load_pumps(); column_loss(); layflat_loss(); velocity(); system_head();
+curve_value(); required_rpm(); operating_point(); engine_options(); evaluate();
+compare_actual(); terrain_elevations().
+Installation and Drive provide validate() methods.
+CurveRangeError distinguishes missing/out-of-domain curve data.
+load_json() caches loaded datasets; restart process or clear cache after edits.
+
+Steps are dictionaries: {'value': number, 'water_level_m': number}.
+Mode is 'yield' or 'rpm'. evaluate() returns pump, status, reasons, conditions,
+rows, required_engine_kw and recommended_engine.
+Status values: 'Not suitable', 'Conditional', 'Suitable for planning'.
+Reasons are failing limits; conditions flag estimates or unresolved information.
+Each row can contain an error; downstream code must handle incomplete rows.
+
+Setup JSON contains version, project, installation, drive, mode, steps and pump.
+Use dataclasses.asdict() to serialize installation/drive. Sidebar restore callback
+validates input, sets widget state, clears editor state, restores row count/mode
+and selected pump. Review full save/restore with a real browser before release.
+Data editor state keys include input_<mode>_<n>. Row-count widget keys depend on
+the up-to-24 checkbox. Preserve edited values thoughtfully when changing modes.
+
+Terrain endpoint: https://api.opentopodata.org/v1/srtm90m
+Requests are user-triggered; only coordinate pairs are sent. Timeout 12 seconds.
+Validates latitude coverage, response status and missing elevations. Manual
+fallback exists. About 90 m terrain resolution cannot reliably establish small
+height differences, hose route lengths or route high points. Live API operation
+was not established by the automated tests; its response was mocked.
+
+Downloads: test-step CSV, Excel workbook (steps, comparisons, installation,
+drive assumptions, source), self-contained Plotly HTML, setup JSON, field-check
+CSV, friction tables and source data. Plotly toolbar offers PNG export.
+No shared database, login or permanent server-side project storage is included.
+
+7. LOCAL DEVELOPMENT AND DEPLOYMENT
+
+Open terminal inside ab_pumps, not its parent archive folder. Python 3.12+.
+Windows PowerShell example:
+  py -3.12 -m venv .venv
+  .\.venv\Scripts\Activate.ps1
+  python -m pip install -r requirements-dev.txt
+  python -m streamlit run app.py
+If PowerShell activation is restricted, use .venv\Scripts\python.exe directly.
+In VS Code choose Python: Select Interpreter -> .venv interpreter, and select
+the same environment as the Jupyter notebook kernel.
+
+Other commands:
+  python -m pytest tests -q
+  python build_data.py
+  python -m notebook AB_Pumps_Installation_Planner.ipynb
+
+Runtime pins in delivered package:
+streamlit 1.66.1, numpy 2.5.4, scipy 1.17.0, pandas 3.1.0, plotly 7.1.0,
+openpyxl 3.1.5, requests 2.34.2.
+Dev requirements also include nbformat, nbclient, ipykernel, pytest and notebook.
+These are the versions reported in the creation environment. If a public
+package index cannot resolve a pin on the user's machine, select an available
+compatible release, document the adjustment and rerun tests. Do not assume
+deployment was verified merely because local tests passed.
+
+Public Streamlit deployment: put the complete project in a GitHub repository,
+deploy app.py, retain data/ and sources/, install requirements.txt. No deployment
+was performed in this conversation. Confirm redistribution permissions for
+supplied/manufacturer source documents before making them publicly accessible.
+Keep real project exports and secrets out of source control.
+
+8. VALIDATION ALREADY COMPLETED AND ITS LIMITS
+
+43 tests passed in the creation environment at delivery. They cover unit/head
+calculations, source interpolation knots and domains, yield/RPM round trips,
+limits over all steps, diesel logic, source files, monotonic friction, 24-step
+RPM calculation, mocked terrain response and Streamlit AppTest interactions.
+AppTest exercised default load, RPM mode, 24 rows, individual water-level mode,
+WA110-2 selection, direct field-head entry and presence of downloads. App runs
+also generated the Excel download payload without exceptions.
+No browser screenshot/visual acceptance review was performed. Full file-upload
+restore and live terrain service still warrant real-browser checks.
+
+Notebook's nine code cells ran successfully in-process using IPython and saved
+outputs. The creation runtime disallowed TCP and IPC kernel sockets, so a normal
+nbclient external-kernel execution could not run there. Validate ordinary VS Code
+Jupyter kernel execution locally; this was an environment restriction, not a
+demonstrated notebook calculation failure.
+
+Passing software tests does not validate the physical accuracy of approximate
+graph digitization. Do not call the dataset manufacturer-certified or field-
+validated. The UI must continue exposing source and approximation qualifications.
+
+9. USEFUL NEXT IMPROVEMENTS — PROPOSALS, NOT COMPLETED WORK
+
+Priority 1: graph/source overlays and a systematic audit of all digitized knots,
+especially ambiguous graph panels and reused approximate shapes. Retain source
+page references and a reviewer/date record. More points should follow the source,
+not merely create a smoother-looking curve.
+Priority 2: obtain actual 150 mm shaft-column and 200 mm layflat loss data,
+confirmed waterway/shaft dimensions, missing pump clearances and WA110-2 power
+above 960 RPM. Replace estimates only with documented evidence.
+Priority 3: real-browser verification of setup save/restore, editor persistence,
+download contents, mobile layout and terrain failure/success paths.
+Priority 4: confirm actual Deutz variants, gearbox ratios, drive ratings,
+mechanical losses and starting-torque requirements with AB Pumps equipment.
+Priority 5: add measured installation datasets for independent end-to-end
+comparisons with known working pumps. Keep historical chart limits distinct
+from manufacturer performance and site measurements.
+
+Potential implementation edge cases to review before expanding features:
+- required_rpm currently evaluates published speeds at a common head; models
+  with unequal head domains may need a carefully bounded local speed bracket.
+- A failed row may still contain partial head/flow/RPM values; exports and plots
+  should clearly distinguish failed duties from passing duties.
+- Changing step counts/modes or restoring JSON can affect editor state; test
+  retention of operator entries rather than silently resetting them.
+- Review additional finite-number/input-range validation for imported JSON and
+  programmatic engine calls beyond the constrained Streamlit widget inputs.
+
+10. WORKING AGREEMENTS FOR FUTURE EDITS
+
+Read README.md, hydraulics.py, build_data.py and tests before changing the model.
+Preserve user decisions above unless the user changes them explicitly.
+Never invent missing specifications or extrapolate pump curves silently.
+Label estimates and uncertain source readings in the UI and exports.
+Update reproducible source data, generated datasets, tests and explanations
+together when correcting a curve. Avoid tests that only mirror an implementation;
+prefer independent source checkpoints and physical/unit consistency checks.
+Run relevant tests after each meaningful change. Do not claim publication,
+field verification or manufacturer approval without evidence.
+Keep operator language plain: installation, yield, head, pump RPM and engine
+candidate. Technical details belong in explanatory expanders/source tabs.
+
+END OF HANDOVER
