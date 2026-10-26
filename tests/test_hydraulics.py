@@ -68,15 +68,15 @@ def test_all_steps_drive_and_bore_limits():
     assert r['status']=='Not suitable' and any('Step 2' in x for x in r['reasons'])
 
 def test_fixed_engine_ratings_and_v6():
-    options=engine_options(100,Drive(engine_model='F6L413FW',engine_derating=1))
+    options=engine_options(100,Drive(engine_model='F6L413F',engine_derating=1))
     assert [x['continuous_kw'] for x in options]==[36,49,61,74,102]
-    assert [x['engine'] for x in options if x['passes']]==['F6L413FW']
-    assert [x['engine'] for x in options if x['installed']]==['F6L413FW']
+    assert [x['engine'] for x in options if x['passes']]==['F6L413F']
+    assert [x['engine'] for x in options if x['installed']]==['F6L413F']
     assert not any(x['passes'] for x in engine_options(103,Drive(engine_derating=1)))
     assert not any(x['passes'] for x in engine_options(100,Drive()))
     available=102*.9
-    assert engine_options(available,Drive(engine_model='F6L413FW'))[-1]['passes']
-    assert not engine_options(available+.001,Drive(engine_model='F6L413FW'))[-1]['passes']
+    assert engine_options(available,Drive(engine_model='F6L413F'))[-1]['passes']
+    assert not engine_options(available+.001,Drive(engine_model='F6L413F'))[-1]['passes']
     assert Drive().engine_model=='F3L912'
     with pytest.raises(ValueError):Drive(engine_model='unknown').validate()
     with pytest.raises(ValueError):engine_options(float('nan'),Drive())
@@ -86,13 +86,44 @@ def test_installed_engine_independent_of_minimum_size():
     installation=Installation(depth_m=100,column_mm=150,hose_mm=150,bore_mm=300)
     steps=[{'value':350,'water_level_m':50},{'value':500,'water_level_m':50}]
     small=evaluate(pump,steps,installation,Drive(drive_rating_kw=200),mode='rpm')
-    large=evaluate(pump,steps,installation,Drive(drive_rating_kw=200,engine_model='F6L413FW'),mode='rpm')
+    large=evaluate(pump,steps,installation,Drive(drive_rating_kw=200,engine_model='F6L413F'),mode='rpm')
     assert small['recommended_engine']==large['recommended_engine']
     assert small['required_engine_kw']==large['required_engine_kw']
-    assert not small['installed_engine_passes'] and large['installed_engine_passes']
-    assert any('installed F3L912' in r for r in small['reasons'])
-    assert not any('installed' in r for r in large['reasons'])
+    assert 'installed_engine_passes' not in small
+    assert small['status']!='Not suitable' and large['status']!='Not suitable'
+    assert small['reasons']==large['reasons']
+    assert not any('installed' in r for r in small['reasons']+large['reasons'])
     assert large['required_engine_kw']==max(r['engine_required_kw'] for r in large['rows'])
+
+def test_usable_engine_limit_and_warning_threshold():
+    drive=Drive(transmission_efficiency=.8,engine_derating=.75,extra_shaft_kw=2)
+    limit=36*.75*.8-2
+    assert engine_pump_limit_kw(drive)==pytest.approx(limit)
+    assert engine_power_warning(limit,drive) is None
+    assert 'Engine power limit exceeded' in engine_power_warning(limit+.01,drive)
+    assert engine_pump_limit_kw(replace(drive,sizing_margin=2))==pytest.approx(limit)
+    assert engine_pump_limit_kw(replace(drive,extra_shaft_kw=100))<0
+
+@pytest.mark.parametrize('name',list(load_pumps()))
+def test_engine_boundary_matches_power_and_flow(name):
+    pump=load_pumps()[name];drive=Drive()
+    boundary=engine_flow_boundary(pump,drive,samples=25)
+    for head,flow,rpm in zip(boundary['head_m'],boundary['yield_ls'],boundary['rpm']):
+        if flow is None:
+            assert rpm is None
+            continue
+        assert 0<=rpm<=min(pump['max_rpm'],max(c['rpm'] for c in pump['power_curves']))
+        assert curve_value(pump,head,rpm,'power')==pytest.approx(boundary['limit_kw'])
+        assert curve_value(pump,head,rpm)==pytest.approx(flow)
+        assert head<=pump['max_head_m']
+
+def test_engine_boundary_no_invented_high_speed_and_zero_anchor():
+    pump=load_pumps()['BP16M']
+    assert all(q is None for q in engine_flow_boundary(pump,Drive(engine_model='F6L413F'))['yield_ls'])
+    low=Drive(transmission_efficiency=.5,engine_derating=.5,extra_shaft_kw=8.5)
+    boundary=engine_flow_boundary(pump,low)
+    assert any(n is not None and 0<n<pump['published_min_rpm'] for n in boundary['rpm'])
+    assert all(q is None for q in engine_flow_boundary(pump,replace(low,extra_shaft_kw=100))['yield_ls'])
 
 @pytest.mark.parametrize('name',list(load_pumps()))
 def test_sub_100_rpm_zero_anchor_and_roundtrip(name):
@@ -126,7 +157,7 @@ def test_low_speed_does_not_extend_head_or_missing_power():
     with pytest.raises(CurveRangeError):operating_point(load_pumps()['BP40M'],0,Installation())
     result=evaluate(load_pumps()['WA110-2'],[{'value':1100,'water_level_m':60}],Installation(depth_m=60),Drive(),mode='rpm')
     assert result['required_engine_kw'] is None
-    assert result['recommended_engine'] is None and result['installed_engine_passes'] is None
+    assert result['recommended_engine'] is None and 'installed_engine_passes' not in result
     assert any('engine recommendation unavailable' in c for c in result['conditions'])
 
 def test_validation_and_extensions():
@@ -167,3 +198,21 @@ def test_terrain_response(monkeypatch):
         def json(self):return {'status':'OK','results':[{'elevation':100},{'elevation':103}]}
     monkeypatch.setattr(requests,'get',lambda *a,**k:Response())
     assert terrain_elevations(-33,18,-33.1,18.1)['difference_m']==3
+
+@pytest.mark.parametrize('name',list(load_pumps()))
+def test_power_range(name):
+    p=load_pumps()[name];rating=pump_power_range(p)
+    c=max(p['power_curves'],key=lambda curve:curve['rpm'])
+    valid=[v for h,v in zip(c['head_m'],c['power_kw']) if h<=p['max_head_m']]
+    if c['head_m'][0]<=p['max_head_m']<=c['head_m'][-1]:
+        valid.append(curve_value(p,p['max_head_m'],c['rpm'],'power'))
+    assert rating['minimum_kw']==p['source_chart']['minimum_motor_kw']
+    assert rating['maximum_kw']==pytest.approx(max(valid))
+    assert rating['power_rpm']==c['rpm']
+    if name=='WA110-2':assert rating['power_rpm']==960<p['max_rpm']
+
+def test_failed_yield_keeps_head_for_overload_chart():
+    p=load_pumps()['BP16M']
+    result=evaluate(p,[{'value':3,'water_level_m':200}],Installation(depth_m=200),Drive())
+    assert result['rows'][0]['head_m']>p['max_head_m']
+    assert result['rows'][0]['error']

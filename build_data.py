@@ -162,7 +162,7 @@ with (ROOT/'data/legacy_limits.csv').open('w',newline='') as f:
  w=csv.DictWriter(f,fieldnames=rows[0]);w.writeheader();w.writerows(rows)
 print(len(pumps),'pumps; curve points and friction data written')
 
-# Manual colour-legend transcription of the AB quick chart. V6 remains unknown.
+# Manual colour-legend transcription; V6 model confirmed by the operator.
 engine_codes={
 'DW15':{100:['3S','3L','3L']},'DW2402':{100:['3S','3L','3L']},
 'DW2404':{80:['3S','3L','3L'],100:['3S','3L','3L']},
@@ -173,7 +173,7 @@ engine_codes={
 'GW9002':{80:['4L','5L','5L'],100:['5L']*3},
 'GW9602':{100:['V6']*3},
 'WA110-2':{80:['5L','5L','6L'],100:['5L','5L','6L']}}
-labels={'3S':'F3L912 / small angle drive','3L':'F3L912 / 60 HP angle drive','4L':'F4L912 / 60 HP angle drive','5L':'F5L912 / 60 HP angle drive','6L':'F6L912 / 60 HP angle drive','V6':'V6 Deutz / model unverified'}
+labels={'3S':'F3L912 / small angle drive','3L':'F3L912 / 60 HP angle drive','4L':'F4L912 / 60 HP angle drive','5L':'F5L912 / 60 HP angle drive','6L':'F6L912 / 60 HP angle drive','V6':'F6L413F (V6) / 60 HP angle drive'}
 for row in rows:
  code=engine_codes.get(row['pump'],{}).get(row['column_mm'],['3S']*3)[[80,100,120].index(row['depth_m'])]
  row['legacy_engine']=labels[code] if row['base_limit_ls'] is not None else ''

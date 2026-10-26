@@ -185,7 +185,65 @@ class Drive:
         return self
 
 # User-confirmed continuous ratings at 2300 engine RPM.
-ENGINES={'F3L912':36.,'F4L912':49.,'F5L912':61.,'F6L912':74.,'F6L413FW':102.}
+ENGINES={'F3L912':36.,'F4L912':49.,'F5L912':61.,'F6L912':74.,'F6L413F':102.}
+
+def engine_pump_limit_kw(drive):
+    """Power available to the pump, before the separate diesel sizing margin."""
+    d=drive.validate()
+    return ENGINES[d.engine_model]*d.engine_derating*d.transmission_efficiency-d.extra_shaft_kw
+
+def engine_power_warning(pump_kw,drive):
+    finite(pump_kw,'Pump power')
+    limit=engine_pump_limit_kw(drive)
+    if pump_kw>limit+1e-7:
+        return (f'Engine power limit exceeded: pump requires {pump_kw:.2f} kW; '
+            f'{drive.engine_model} provides {limit:.2f} kW usable at the pump '
+            f'({ENGINES[drive.engine_model]:g} kW continuous engine rating).')
+    return None
+
+def engine_flow_boundary(pump,drive,samples=250):
+    """Equal-power flow boundary only where both published curve domains overlap."""
+    limit=engine_pump_limit_kw(drive)
+    curves=pump['flow_curves']+pump['power_curves']
+    lo=max(0,max(c['head_m'][0] for c in curves))
+    hi=min(pump['max_head_m'],min(c['head_m'][-1] for c in curves))
+    if lo>hi:raise CurveRangeError('No common flow/power head domain for engine boundary')
+    maxrpm=min(max(c['rpm'] for c in pump['flow_curves']),
+        max(c['rpm'] for c in pump['power_curves']))
+    speeds=sorted({0.,maxrpm}|{c['rpm'] for c in pump['power_curves'] if c['rpm']<maxrpm})
+    heads=np.linspace(lo,hi,samples)
+    flows=[];rpms=[]
+    power_speeds=sorted(pump['power_curves'],key=lambda c:c['rpm'])
+    flow_speeds=sorted(pump['flow_curves'],key=lambda c:c['rpm'])
+    source_speeds=[0.]+[c['rpm'] for c in power_speeds]
+    for h in heads:
+        # Use the same piecewise-linear/zero-anchor power model without emitting
+        # hundreds of low-speed warnings while sampling a display boundary.
+        powers=[0.]+[float(np.interp(h,c['head_m'],c['power_kw'])) for c in power_speeds]
+        values=np.interp(speeds,source_speeds,powers)
+        crossings=[]
+        for n1,n2,p1,p2 in zip(speeds,speeds[1:],values,values[1:]):
+            if p1==p2:
+                if abs(limit-p1)<=1e-7:crossings.append(n2)
+            elif min(p1,p2)<=limit<=max(p1,p2):
+                crossings.append(n1+(limit-p1)*(n2-n1)/(p2-p1))
+        if not crossings:
+            flows.append(None);rpms.append(None);continue
+        rpm=max(crossings)
+        flow=float(np.interp(rpm,[0.]+[c['rpm'] for c in flow_speeds],
+            [0.]+[float(np.interp(h,c['head_m'],c['flow_m3h']))/3.6 for c in flow_speeds]))
+        flows.append(flow);rpms.append(rpm)
+    return {'head_m':heads.tolist(),'yield_ls':flows,'rpm':rpms,'limit_kw':limit}
+
+def pump_power_range(pump):
+    """Published minimum motor size and peak kW on the highest power RPM curve."""
+    curve=max(pump['power_curves'],key=lambda c:c['rpm'])
+    lo=max(0,curve['head_m'][0]);hi=min(pump['max_head_m'],curve['head_m'][-1])
+    if lo>hi:raise CurveRangeError('Power curve does not cover the rated head domain')
+    heads=[lo,hi]+[h for h in curve['head_m'] if lo<h<hi]
+    peak=max(float(np.interp(h,curve['head_m'],curve['power_kw'])) for h in heads)
+    return {'minimum_kw':pump['source_chart']['minimum_motor_kw'],
+        'maximum_kw':peak,'power_rpm':curve['rpm']}
 def engine_options(required_kw,drive):
     nonnegative(required_kw,'Required engine power')
     d=drive.validate();out=[]
@@ -201,6 +259,7 @@ def evaluate(pump,steps,installation,drive,mode='yield',bore_override=None):
         try:
             if mode=='yield':
                 r=system_head(float(step['value']),installation,step.get('water_level_m'))
+                row.update(r)
                 n=required_rpm(pump,r['yield_ls'],r['head_m'])
             else:
                 n=float(step['value']);r=operating_point(pump,n,installation,step.get('water_level_m'))
@@ -213,8 +272,8 @@ def evaluate(pump,steps,installation,drive,mode='yield',bore_override=None):
                 row['running_torque_nm']=9550*(power+drive.extra_shaft_kw)/n
                 row['engine_required_kw']=(power+drive.extra_shaft_kw)/drive.transmission_efficiency*drive.sizing_margin
                 if power+drive.extra_shaft_kw>drive.drive_rating_kw:fail.append(f'Step {i}: angle-drive power rating exceeded')
-                available=ENGINES[drive.engine_model]*drive.engine_derating
-                if row['engine_required_kw']>available:fail.append(f'Step {i}: installed {drive.engine_model} available {available:g} kW is below required {row["engine_required_kw"]:.2f} kW')
+                warning=engine_power_warning(power,drive)
+                if warning:conditions.append(f'Step {i}: {warning}')
             except CurveRangeError as e:conditions.append(f'Step {i}: {e}; engine recommendation unavailable')
             row['error']=''
             for note in row['notes']:
@@ -233,7 +292,7 @@ def evaluate(pump,steps,installation,drive,mode='yield',bore_override=None):
     reqs=[r['engine_required_kw'] for r in results if 'engine_required_kw' in r]
     peak=max(reqs) if reqs and len(reqs)==len(steps) else None
     engine=next((e['engine'] for e in engine_options(peak,drive) if e['passes']),None) if peak is not None else None
-    return {'pump':pump['name'],'status':'Not suitable' if fail else ('Conditional' if conditions else 'Suitable for planning'),'reasons':list(dict.fromkeys(fail)),'conditions':list(dict.fromkeys(conditions)),'rows':results,'required_engine_kw':peak,'recommended_engine':engine,'installed_engine':drive.engine_model,'installed_engine_passes':None if peak is None else ENGINES[drive.engine_model]*drive.engine_derating>=peak}
+    return {'pump':pump['name'],'status':'Not suitable' if fail else ('Conditional' if conditions else 'Suitable for planning'),'reasons':list(dict.fromkeys(fail)),'conditions':list(dict.fromkeys(conditions)),'rows':results,'required_engine_kw':peak,'recommended_engine':engine,'installed_engine':drive.engine_model}
 
 def compare_actual(pump,q_ls,head_m,actual_rpm,tolerance_pct=10):
     nonnegative(tolerance_pct,'Tolerance')
