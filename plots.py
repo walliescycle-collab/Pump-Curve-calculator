@@ -1,3 +1,4 @@
+from dataclasses import replace
 import numpy as np
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
@@ -5,9 +6,13 @@ from hydraulics import (system_head,curve_value,CurveRangeError,column_loss,layf
     engine_pump_limit_kw,engine_flow_boundary,ENGINES)
 COLORS=['#057f8d','#d88920','#6750a4','#3074bc','#ba4b5b','#65852d']
 
-def performance_plot(pump,result=None,installation=None,steps=None,flow_unit='m³/h',field_check=None,drive=None):
+def performance_plot(pump,result=None,installation=None,steps=None,flow_unit='m³/h',field_check=None,drive=None,engine_fraction_range=None):
     """Recreate source axes without auto-scaling or inventing extra source knots."""
     chart=pump['source_chart']
+    if engine_fraction_range is not None:
+        lower,upper=engine_fraction_range
+        if drive is None or not 0<lower<upper<=1:
+            raise ValueError('Engine fraction range requires a drive and 0 < lower < upper <= 1')
     if flow_unit not in ['m³/h','L/s']:raise ValueError('Unsupported flow unit')
     factor=1 if flow_unit=='m³/h' else 1/3.6
     fig=make_subplots(rows=2,cols=1,row_heights=[.69,.31],vertical_spacing=.12)
@@ -86,30 +91,37 @@ def performance_plot(pump,result=None,installation=None,steps=None,flow_unit='m�
                 marker=dict(size=13,color='#d88920',line=dict(width=1,color='white')),
                 hovertemplate='Estimated absorbed power at actual RPM<br>Head: %{x:.1f} m<br>%{y:.2f} kW<extra></extra>'),row=2,col=1)
     if drive is not None:
-        limit=engine_pump_limit_kw(drive)
-        label=f'{drive.engine_model} · {limit:.2f} kW usable ({ENGINES[drive.engine_model]:g} kW engine)'
-        red='#ef4444'
-        fig.add_hline(y=limit,line_dash='dash',line_color=red,line_width=2,
-            annotation_text=label,annotation_position='top right',row=2,col=1)
-        boundary=engine_flow_boundary(pump,drive)
-        boundary_flows=[q*3.6*factor for q in boundary['yield_ls'] if q is not None]
-        fig.add_trace(go.Scatter(x=boundary['head_m'],
-            y=[q*3.6*factor if q is not None else None for q in boundary['yield_ls']],
-            customdata=boundary['rpm'],mode='lines',connectgaps=False,
-            name=f'Engine limit · {label}',line=dict(color=red,width=2,dash='dash'),
-            hovertemplate=f'{label}<br>Head: %{{x:.1f}} m<br>Flow: %{{y:.2f}} {flow_unit}<br>%{{customdata:.0f}} RPM<extra></extra>'),row=1,col=1)
-        if boundary_flows:
-            low,high=fig.layout.yaxis.range
-            fig.update_yaxes(range=[min(low,min(boundary_flows)*.9),
-                max(high,max(boundary_flows)*1.1)],row=1,col=1)
-        else:
-            message='Engine limit above published power curves' if limit>0 else 'No positive pump power available'
-            fig.add_annotation(x=.02,y=.98,xref='x domain',yref='y domain',
-                text=f'{label}<br>{message}; no equal-power boundary',showarrow=False,xanchor='left')
+        limits=[]
+        fractions=[('',drive.engine_derating)] if engine_fraction_range is None else list(zip(
+            ['Lower wear limit','Upper wear limit'],engine_fraction_range))
+        for index,(qualifier,fraction) in enumerate(fractions):
+            limit_drive=replace(drive,engine_derating=fraction)
+            limit=engine_pump_limit_kw(limit_drive)
+            limits.append(limit)
+            label=f'{drive.engine_model} · {limit:.2f} kW usable ({fraction:.0%} of {ENGINES[drive.engine_model]:g} kW engine)'
+            if qualifier:label=f'{qualifier} · {label}'
+            red='#ef4444' if index==0 else '#f97373'
+            fig.add_hline(y=limit,line_dash='dash',line_color=red,line_width=2,
+                annotation_text=label,annotation_position='bottom right' if qualifier and index==0 else 'top right',row=2,col=1)
+            boundary=engine_flow_boundary(pump,limit_drive)
+            boundary_flows=[q*3.6*factor for q in boundary['yield_ls'] if q is not None]
+            fig.add_trace(go.Scatter(x=boundary['head_m'],
+                y=[q*3.6*factor if q is not None else None for q in boundary['yield_ls']],
+                customdata=boundary['rpm'],mode='lines',connectgaps=False,
+                name=f'Engine limit · {label}',line=dict(color=red,width=2,dash='dash'),
+                hovertemplate=f'{label}<br>Head: %{{x:.1f}} m<br>Flow: %{{y:.2f}} {flow_unit}<br>%{{customdata:.0f}} RPM<extra></extra>'),row=1,col=1)
+            if boundary_flows:
+                low,high=fig.layout.yaxis.range
+                fig.update_yaxes(range=[min(low,min(boundary_flows)*.9),
+                    max(high,max(boundary_flows)*1.1)],row=1,col=1)
+            else:
+                message='Engine limit above published power curves' if limit>0 else 'No positive pump power available'
+                fig.add_annotation(x=.02,y=.98-index*.14,xref='x domain',yref='y domain',
+                    text=f'{label}<br>{message}; no equal-power boundary',showarrow=False,xanchor='left')
         power_values=[v for trace in fig.data if trace.yaxis=='y2' for v in trace.y if v is not None]
         low,high=chart['power']['range']
-        fig.update_yaxes(range=[min(low,0,limit*1.1),
-            max(high,max(power_values,default=0)*1.1,limit+max(1,abs(limit)*.12))],row=2,col=1)
+        fig.update_yaxes(range=[min(low,0,min(limits)*1.1),
+            max(high,max(power_values,default=0)*1.1,max(limits)+max(1,abs(max(limits))*.12))],row=2,col=1)
     minimum=chart['minimum_motor_kw']
     if minimum is not None:
         fig.add_annotation(x=.025,y=.98,xref='x2 domain',yref='y2 domain',

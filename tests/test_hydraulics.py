@@ -74,7 +74,7 @@ def test_fixed_engine_ratings_and_v6():
     assert [x['engine'] for x in options if x['installed']]==['F6L413F']
     assert not any(x['passes'] for x in engine_options(103,Drive(engine_derating=1)))
     assert not any(x['passes'] for x in engine_options(100,Drive()))
-    available=102*.9
+    available=102*.5
     assert engine_options(available,Drive(engine_model='F6L413F'))[-1]['passes']
     assert not engine_options(available+.001,Drive(engine_model='F6L413F'))[-1]['passes']
     assert Drive().engine_model=='F3L912'
@@ -196,8 +196,15 @@ def test_terrain_response(monkeypatch):
     class Response:
         def raise_for_status(self):pass
         def json(self):return {'status':'OK','results':[{'elevation':100},{'elevation':103}]}
-    monkeypatch.setattr(requests,'get',lambda *a,**k:Response())
-    assert terrain_elevations(-33,18,-33.1,18.1)['difference_m']==3
+    def get(url,params,timeout):
+        assert url=='https://api.opentopodata.org/v1/srtm30m'
+        assert params=={'locations':'-33,18|-33.1,18.1'}
+        assert timeout==12
+        return Response()
+    monkeypatch.setattr(requests,'get',get)
+    result=terrain_elevations(-33,18,-33.1,18.1)
+    assert result['difference_m']==3
+    assert result['dataset']=='SRTM30m / Open Topo Data'
 
 @pytest.mark.parametrize('name',list(load_pumps()))
 def test_power_range(name):
@@ -216,3 +223,13 @@ def test_failed_yield_keeps_head_for_overload_chart():
     result=evaluate(p,[{'value':3,'water_level_m':200}],Installation(depth_m=200),Drive())
     assert result['rows'][0]['head_m']>p['max_head_m']
     assert result['rows'][0]['error']
+@pytest.mark.parametrize('selected',list(ENGINES))
+def test_engine_wear_sizing_uses_each_candidates_lower_fraction(selected):
+    from hydraulics import ENGINE_POWER_FRACTIONS
+    options=engine_options(38,Drive(engine_model=selected,engine_derating=ENGINE_POWER_FRACTIONS[selected][0],
+        engine_fraction_manual=False))
+    for row in options:
+        assert row['available_kw']==pytest.approx(ENGINES[row['engine']]*ENGINE_POWER_FRACTIONS[row['engine']][0])
+    assert next(row for row in options if row['engine']=='F5L912')['passes']
+    manual=engine_options(38,Drive(engine_model=selected,engine_derating=.6,engine_fraction_manual=True))
+    assert not next(row for row in manual if row['engine']=='F5L912')['passes']

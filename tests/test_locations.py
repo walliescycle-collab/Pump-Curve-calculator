@@ -1,5 +1,6 @@
 import pytest
-from locations import parse_map_coordinates,validate_coordinates
+import streamlit as st
+from locations import parse_map_coordinates,validate_coordinates,store_point,map_points,edited_coordinates
 
 
 @pytest.mark.parametrize('text',[
@@ -21,3 +22,30 @@ def test_unsupported_coordinates_are_explicit_errors(text):
 def test_browser_location_validation():
     assert validate_coordinates(-33.9,18.6)==(-33.9,18.6)
     with pytest.raises(ValueError):validate_coordinates(float('nan'),18)
+
+
+def test_ab_pumps_parenthesized_example():
+    assert parse_map_coordinates('(-33.955283976316174, 18.702626533523638)')==(
+        -33.955283976316174,18.702626533523638)
+
+
+def test_gps_accuracy_and_manual_edits(monkeypatch):
+    monkeypatch.setattr(st,'session_state',{})
+    store_point('borehole',-33.95,18.70,12.)
+    store_point('outlet',-33.96,18.71)
+    points=map_points()
+    assert [point['label'] for point in points]==['Borehole','Outlet']
+    assert points[0]['accuracy_m']==12 and points[1]['accuracy_m'] is None
+    st.session_state['borehole_lat']=-33.94
+    edited_coordinates('borehole')
+    assert map_points()[0]['latitude']==-33.94
+    assert map_points()[0]['accuracy_m'] is None
+    store_point('outlet',-33.96,18.71,0.)
+    assert map_points()[1]['accuracy_m']==0.
+
+
+@pytest.mark.parametrize('accuracy',[-1,float('nan'),float('inf')])
+def test_invalid_accuracy_is_not_stored(monkeypatch,accuracy):
+    monkeypatch.setattr(st,'session_state',{})
+    with pytest.raises(ValueError):store_point('borehole',-33.95,18.70,accuracy)
+    assert 'terrain_points' not in st.session_state

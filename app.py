@@ -9,6 +9,7 @@ from hydraulics import *
 from plots import (system_plot,friction_plot,performance_plot,head_contribution_plot,
     rpm_comparison_plot,apply_theme)
 from locations import terrain_controls
+from pipe_weights import PIPE_WEIGHTS, installation_pipe_weight
 
 st.set_page_config(page_title='AB Pumps | Installation planner',page_icon='💧',layout='wide')
 st.markdown('''<style>
@@ -27,6 +28,14 @@ def show_plot(fig,filename=None):
     return fig
 
 
+def use_manual_engine_fraction():
+    st.session_state['engine_fraction_manual']=True
+
+
+def use_engine_wear_range():
+    st.session_state['engine_fraction_manual']=False
+
+
 def restore_setup():
     try:
         data=json.loads(restore.getvalue())
@@ -37,6 +46,8 @@ def restore_setup():
         renamed=drive_data.get('engine_model')=='F6L413FW'
         if renamed:drive_data['engine_model']='F6L413F'
         sd=Drive(**drive_data).validate()
+        if not .4<=sd.engine_derating<=.75:
+            raise ValueError('Saved available engine power fraction must be between 0.40 and 0.75.')
         ss=data['steps'];sm=data['mode']
         if sm not in ['yield','rpm'] or not 1<=len(ss)<=24:raise ValueError('Invalid saved steps')
         for step in ss:
@@ -46,6 +57,8 @@ def restore_setup():
         unit=data.get('flow_unit','L/s')
         if unit not in ['m³/h','L/s']:raise ValueError('Invalid saved flow unit')
         if not isinstance(data.get('simplified',False),bool):raise ValueError('Invalid simplified setting')
+        manual=data.get('engine_fraction_manual',sd.engine_fraction_manual)
+        if not isinstance(manual,bool):raise ValueError('Invalid engine power fraction mode')
         fields={'project':data.get('project','Restored installation'),'depth':si.depth_m,
             'bore':si.bore_mm,'column':si.column_mm,'hose':si.hose_mm,
             'length':si.hose_length_m,'elevation':si.elevation_m,
@@ -55,7 +68,8 @@ def restore_setup():
             'margin':sd.sizing_margin,'derating':sd.engine_derating,'engine_model':sd.engine_model,
             'expanded':len(ss)>4,'mode_label':'Yield (L/s)' if sm=='yield' else 'Pump-shaft RPM',
             f'count_{len(ss)>4}':len(ss),'restored_steps':ss,'restored_mode':sm,
-            'flow_unit':unit,'simplified':data.get('simplified',False)}
+            'flow_unit':unit,'simplified':data.get('simplified',False),
+            'engine_fraction_manual':manual}
         for key in list(st.session_state):
             if key.startswith('input_'):del st.session_state[key]
         for key,val in fields.items():st.session_state[key]=val
@@ -91,7 +105,21 @@ with st.sidebar:
             efficiency=st.slider('Transmission efficiency',.5,1.,.90,.01,key='efficiency')
             extra=st.number_input('Additional shaft/bearing mechanical loss (kW)',0.,100.,0.,.1,key='extra')
             margin=st.number_input('Diesel sizing factor',1.,2.,1.33,.01,key='margin')
-            derate=st.slider('Available engine power fraction',.5,1.,.90,.01,key='derating')
+            st.session_state.setdefault('engine_fraction_manual',False)
+            if 'derating' in st.session_state and not .4<=st.session_state['derating']<=.75:
+                reset_fraction=.5 if st.session_state['engine_fraction_manual'] else ENGINE_POWER_FRACTIONS[engine][0]
+                st.session_state['derating']=reset_fraction
+                st.warning(f'Previous available engine power fraction was outside the 0.40–0.75 range. Reset to {reset_fraction:.2f}; review this assumption.')
+            fraction_range=None if st.session_state['engine_fraction_manual'] else ENGINE_POWER_FRACTIONS[engine]
+            if fraction_range is not None:
+                st.session_state['derating']=fraction_range[0]
+            derate=st.slider('Available engine power fraction',.4,.75,.60,.01,key='derating',
+                on_change=use_manual_engine_fraction)
+            if fraction_range is not None:
+                st.caption(f'Engine wear range: {fraction_range[0]:.0%}–{fraction_range[1]:.0%}. Both limits are plotted; warnings and sizing use the lower bound. Adjust the slider to use one custom limit.')
+            else:
+                st.caption(f'Custom engine power fraction: {derate:.0%}. One limit is plotted.')
+            st.button('Use engine wear range',on_click=use_engine_wear_range)
             st.caption('Continuous engine ratings apply at 2300 engine RPM. Confirm transmission ratio and starting torque.')
     with st.expander('Save or restore setup'):
         restore=st.file_uploader('Load saved setup JSON',type=['json'])
@@ -101,9 +129,11 @@ with st.sidebar:
         st.caption('Head = lift + column friction + discharge elevation + layflat friction. Column friction uses full installation depth. Fittings, outlet pressure and discharge velocity head are excluded. Curve and friction estimates require site verification.')
 
 installation=Installation(depth,col,length,hose,elevation,bore,full)
-drive=Drive(rpmcap,drivekw,efficiency,extra,margin,derate,engine)
-tabs=st.tabs(['Plan & select','Field curve check'] if simplified else
-    ['1 · Plan & select','2 · Curves & diesel','3 · Field curve check','4 · Friction & sources'])
+drive=Drive(rpmcap,drivekw,efficiency,extra,margin,derate,engine,
+    engine_fraction_manual=st.session_state['engine_fraction_manual'])
+tabs=st.tabs(['Plan & select','Installation pipes & weight','Field curve check'] if simplified else
+    ['1 · Plan & select','2 · Installation pipes & weight','3 · Curves & diesel',
+     '4 · Field curve check','5 · Friction & sources'])
 with tabs[0]:
     terrain_controls(terrain_elevations)
     a,b,c=st.columns([2,1,1])
@@ -113,6 +143,7 @@ with tabs[0]:
     n=c.number_input('Number of test steps',1,24 if expanded else 4,4,1,key=f'count_{expanded}')
     defaults=np.linspace(3,5.5,n) if mode=='yield' else np.linspace(900,1100,n)
     if mode=='yield' and n==4:defaults=np.array([3.,4.,6.,8.])
+    if mode=='rpm':defaults[:min(n,4)]=[300.,500.,700.,950.][:min(n,4)]
     frame=pd.DataFrame({'value':defaults,'water_level_m':[float(depth)]*n})
     if 'restored_steps' in st.session_state and st.session_state.get('restored_mode')==mode:
         frame=pd.DataFrame(st.session_state['restored_steps']).reindex(range(n)).fillna(
@@ -135,7 +166,6 @@ with tabs[0]:
             'Minimum bore (mm)':pumps[name]['minimum_bore_mm'],'Result':res['status'],
             'Min motor kW':power['minimum_kw'],'Max curve kW':power['maximum_kw'],
             'Power curve RPM':power['power_rpm'],
-            'Minimum engine size':res['recommended_engine'] or ('Above available range' if res['required_engine_kw'] is not None else 'Unavailable'),
             'Required engine kW':res['required_engine_kw'],'Max yield L/s':max(vals) if vals else None,
             'Reason / qualification':'; '.join(res['reasons']+res['conditions'])})
     rank={'Suitable for planning':0,'Conditional':1,'Not suitable':2}
@@ -156,7 +186,8 @@ with tabs[0]:
     if any('head_m' in r for r in result['rows']):
         show_plot(head_contribution_plot(pump,result),f'{selection}_head')
     else:st.info('Head contribution unavailable: no test step has a calculated head.')
-    sourcefig=show_plot(performance_plot(pump,result,installation,steps,flow_unit,drive=drive),f'{selection}_performance')
+    sourcefig=show_plot(performance_plot(pump,result,installation,steps,flow_unit,drive=drive,
+        engine_fraction_range=fraction_range),f'{selection}_performance')
     detail=pd.DataFrame(result['rows'])
     if not simplified:
         st.download_button('Download pump performance graphs',sourcefig.to_html(include_plotlyjs=True),f'{selection}_performance.html','text/html')
@@ -194,7 +225,7 @@ with tabs[0]:
                 st.info(f"Matching reference installation: {ref.base_limit_ls:g} L/s base limit; {ref.legacy_engine}. Historical guidance does not replace calculated limits.")
 
 if not simplified:
-    with tabs[1]:
+    with tabs[2]:
         st.subheader(f'{selection} · operating plan')
         valid=[r for r in result['rows'] if 'rpm' in r]
         metrics=st.columns(4)
@@ -221,18 +252,21 @@ if not simplified:
             export_detail.to_excel(writer,index=False,sheet_name='Test steps')
             table.to_excel(writer,index=False,sheet_name='Pump comparison')
             pd.DataFrame([asdict(installation)]).to_excel(writer,index=False,sheet_name='Installation')
-            pd.DataFrame([asdict(drive)]).to_excel(writer,index=False,sheet_name='Drive assumptions')
+            pd.DataFrame([dict(asdict(drive),engine_fraction_manual=st.session_state['engine_fraction_manual'],
+                engine_fraction_lower=fraction_range[0] if fraction_range else derate,
+                engine_fraction_upper=fraction_range[1] if fraction_range else derate)]).to_excel(writer,index=False,sheet_name='Drive assumptions')
             pd.DataFrame([{'pump':selection,'source':pump['source'],'quality':pump['quality'],'notes':pump['notes']}]).to_excel(writer,index=False,sheet_name='Source')
             for sheet in writer.sheets.values():
                 sheet.freeze_panes='A2';sheet.auto_filter.ref=sheet.dimensions
                 for cells in sheet.columns:sheet.column_dimensions[cells[0].column_letter].width=min(60,max(14,max(len(str(cell.value or '')) for cell in cells)+2))
         c2.download_button('Download Excel',b.getvalue(),'AB_Pumps_installation.xlsx','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
         c3.download_button('Download interactive plot',fig.to_html(include_plotlyjs=True),'AB_Pumps_curves.html','text/html')
-        config={'version':3,'project':project,'installation':asdict(installation),'drive':asdict(drive),
+        config={'version':4,'project':project,'installation':asdict(installation),'drive':asdict(drive),
+            'engine_fraction_manual':st.session_state['engine_fraction_manual'],
             'mode':mode,'steps':steps,'pump':selection,'flow_unit':flow_unit,'simplified':simplified}
         c4.download_button('Save setup JSON',json.dumps(config,indent=2),'AB_Pumps_setup.json','application/json')
 
-with tabs[1 if simplified else 2]:
+with tabs[2 if simplified else 3]:
     st.subheader('Field curve check')
     fp=st.selectbox('Pump being tested',list(pumps),index=list(pumps).index(selection),key='field_pump')
     p=pumps[fp]
@@ -268,7 +302,8 @@ with tabs[1 if simplified else 2]:
     if field_check is not None:
         for note in check['notes']:st.warning(note)
         (st.success if abs(check['rpm_difference_pct'])<=tolerance else st.warning)(check['status'])
-        show_plot(performance_plot(p,flow_unit=flow_unit,field_check=field_check,drive=drive),f'{fp}_field_performance')
+        show_plot(performance_plot(p,flow_unit=flow_unit,field_check=field_check,drive=drive,
+            engine_fraction_range=fraction_range),f'{fp}_field_performance')
         show_plot(rpm_comparison_plot(check),f'{fp}_field_rpm')
         if not simplified:
             cc=st.columns(3)
@@ -278,10 +313,11 @@ with tabs[1 if simplified else 2]:
             st.caption('Positive RPM deviation means more speed than expected is needed for the measured flow/head. Tolerance is a comparison aid, not permission to exceed ratings or a diagnosis of pump wear.')
             st.download_button('Download field comparison',pd.DataFrame([dict(field_check,pump=fp)]).to_csv(index=False),'AB_Pumps_field_check.csv','text/csv')
     else:
-        show_plot(performance_plot(p,flow_unit=flow_unit,drive=drive),f'{fp}_field_performance')
+        show_plot(performance_plot(p,flow_unit=flow_unit,drive=drive,
+            engine_fraction_range=fraction_range),f'{fp}_field_performance')
 
 if not simplified:
-    with tabs[3]:
+    with tabs[4]:
         st.subheader('Friction charts')
         show_plot(friction_plot('column'));show_plot(friction_plot('hose'))
         with st.expander('Friction model & limitations'):
@@ -305,3 +341,35 @@ if not simplified:
         with st.expander('Original friction and AB quick-reference charts'):
             st.image(str(ROOT/'sources/cemo_friction.jpg'));st.image(str(ROOT/'sources/ab_quick_reference.jpg'))
         st.markdown('[Franklin Mono BP](https://franklin-electric.co.za/products/mono-bp-range/) · [Franklin Orbit GW](https://franklin-electric.co.za/products/orbit-gw-range/) · [Rain-Flo layflat](https://www.rainfloirrigation.com/irrigation/charts-layouts/friction-loss-chart) · [Terrain API](https://www.opentopodata.org/api/)')
+
+with tabs[1]:
+    st.subheader('Installation pipes & weight')
+    st.write(f'Requested installation depth: **{depth:g} m** | Column diameter: **{col} mm** (from sidebar).')
+    st.caption('Depth is measured to the bottom of the pump. Pipe length plus pump length is rounded down to avoid exceeding the requested depth; no cutting or other pipe lengths are assumed.')
+    pc=st.columns(2)
+    pump_length=pc[0].number_input('Pump length (m)',.1,1000.,1.5,.1,key='weight_pump_length')
+    pump_weight=pc[1].number_input('Pump weight (kg)',0.,10000.,0.,1.,key='weight_pump_kg')
+    if pump_weight==0:
+        st.warning('Pump weight not supplied: totals currently exclude pump mass.')
+    if col not in PIPE_WEIGHTS:
+        st.warning(f'No photo weight data for {col} mm column. Select 40, 50, 65, 80 or 100 mm in the sidebar.')
+    else:
+        shaft,rate=PIPE_WEIGHTS[col]
+        st.caption(f'Photo reference: {rate} kg per 3 m of combined column pipe, shaft and bobbin assembly; {shaft} mm shaft. A welded 6 m pipe uses twice the 3 m weight. Water volume uses the installation column diameter ({col} mm).')
+        try:
+            weights=installation_pipe_weight(depth,col,pump_length,pump_weight)
+        except ValueError as exc:
+            st.error(str(exc))
+        else:
+            if weights.column_length_m==0:
+                st.warning('No complete 3 m pipe section fits above the pump within this depth. This is not a usable piped installation.')
+            st.write(f"**6 m pipes:** {weights.pipes_6m} | **3 m pipes:** {weights.pipes_3m} | **Total pipes:** {weights.pipes_6m+weights.pipes_3m}")
+            st.write(f"**Achieved depth:** {weights.achieved_depth_m:g} m")
+            st.write(f"**Dry assembly + entered pump:** {weights.dry_total_kg:.2f} kg")
+            st.write(f"**Dry assembly + pump + column water:** {weights.filled_total_kg:.2f} kg")
+            st.caption('Water estimate assumes a full column, subtracts shaft volume and uses 1000 kg/m³. Pump/internal fitting displacement, pump water, layflat, drive head and other accessories are excluded. This mass estimate is not a certified lifting load or safe working load; buoyancy and dynamic loads are not modelled.')
+    with st.expander('Photo weight reference'):
+        st.write('Column / shaft / combined assembly per 3 m:')
+        for size,(shaft,rate) in PIPE_WEIGHTS.items():
+            st.write(f'{size} mm / {shaft} mm / {rate} kg')
+        st.caption('The photo’s 65 mm / 105 m entry of 825 kg is inconsistent with its 25 kg per 3 m rate. This calculator uses the consistent rate: 875 kg at 105 m. Shaft sizes apply to this weight/water estimate only; hydraulic calculations are unchanged.')

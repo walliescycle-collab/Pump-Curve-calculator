@@ -1,0 +1,11 @@
+engine,drive,rated_kw,photo_cases,calculated_cases,eligible_cases,excluded_cases,min_required_engine_kw,median_required_engine_kw,max_required_engine_kw,max_implied_min_fraction,controlling_setup,interpretation
+F3L912,small,36.0,83,69,60,23,4.07638392038382,8.175129126071514,18.414432200775,0.5115120055770833,"WA50-2, 65 mm column, 120 m, 6.9 L/s",Lower-bound estimate only; maximum available engine power is not identified by these duties.
+F3L912,large,36.0,43,36,36,7,5.406927643902397,10.871459605091578,24.078384790723682,0.6688440219645467,"WA50-2, 80 mm column, 120 m, 10.41 L/s",Lower-bound estimate only; maximum available engine power is not identified by these duties.
+F4L912,small,49.0,6,6,6,0,12.927846732710558,15.352107491732673,17.6984860649631,0.3611935931625122,"WA50-2, 100 mm column, 120 m, 8.3 L/s",Lower-bound estimate only; maximum available engine power is not identified by these duties.
+F4L912,large,49.0,10,10,8,2,15.519359670453996,19.80006269445039,25.32527127458765,0.516842270909952,"WA90-2, 80 mm column, 80 m, 15 L/s",Lower-bound estimate only; maximum available engine power is not identified by these duties.
+F5L912,small,61.0,0,0,0,0,,,,,,Lower-bound estimate only; maximum available engine power is not identified by these duties.
+F5L912,large,61.0,15,12,11,4,23.591498357375677,35.17253020167377,47.67440966714789,0.7815476994614409,"WA110-2, 100 mm column, 100 m, 25 L/s",Lower-bound estimate only; maximum available engine power is not identified by these duties.
+F6L912,small,74.0,0,0,0,0,,,,,,Lower-bound estimate only; maximum available engine power is not identified by these duties.
+F6L912,large,74.0,2,1,1,1,48.14962453033479,48.14962453033479,48.14962453033479,0.650670601761281,"WA110-2, 100 mm column, 120 m, 22 L/s",Lower-bound estimate only; maximum available engine power is not identified by these duties.
+F6L413F,small,102.0,0,0,0,0,,,,,,Lower-bound estimate only; maximum available engine power is not identified by these duties.
+F6L413F,large,102.0,3,0,0,3,,,,,,Lower-bound estimate only; maximum available engine power is not identified by these duties.

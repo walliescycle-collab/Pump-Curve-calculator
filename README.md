@@ -2,6 +2,53 @@
 
 A Streamlit planning app and editable Jupyter notebook sharing one calculation engine. Includes 29 pump models, four to 24 test steps, yield and pump-shaft RPM input, diesel sizing, measured-versus-expected performance, terrain lookup, system curves, and CSV/Excel/HTML exports.
 
+## Standalone legacy-photo power analysis
+
+Run `& "$env:USERPROFILE\.venvs\ab-pumps\Scripts\python.exe" legacy_power_analysis.py`
+from this folder to regenerate `analysis_results/legacy_power_analysis.xlsx` and
+the detailed, engine-summary and assumptions CSV files. This analysis does not
+change app settings or the legacy source dataset.
+
+Each nonblank photo duty (including italic alternatives and the separately flagged
+18 L/s cases) uses the built-in head/friction and performance-curve calculations.
+The photo's 65 mm column uses 100 mm layflat, unlike the existing legacy dataset.
+Engine required kW is absorbed pump kW / 0.90, with no sizing margin or extra loss.
+The workbook records all assumptions, photo transcription corrections, out-of-range
+errors and exclusions. DW15 has no built-in curve; no substitute is assumed.
+GW9602 uses the confirmed 150 m static lift plus friction, outside its built-in
+150 m head limit, so no engine power is invented for it.
+
+Summary fractions are **implied minimum requirements**, not measured available
+engine power or calibrated availability recommendations. Maximum yield can be
+limited by pipes, RPM or drives rather than the engine. Small-drive power ratings
+were not supplied and remain unverified. Invalid curves, exceeded known RPM/large-drive
+power limits, low-RPM estimates and not-advised duties are excluded from summaries
+but retained in the detailed results.
+
+## Installation pipes & weight
+
+Available as the second tab in both normal and Simplified modes. Requested depth
+and nominal column size follow the sidebar. Depth is interpreted as the bottom
+of the pump; adjustable pump length defaults to 1.5 m. Column length is rounded
+down to complete 3 m increments so the achieved depth never exceeds the request.
+The calculator maximises standard welded 6 m pipes and adds one 3 m pipe if needed.
+Only pipe quantities are counted, not shafts, couplings or bearings.
+
+The supplied sheet gives combined column/shaft/bobbin assembly weights per 3 m:
+40 mm: 15 kg; 50 mm: 20 kg; 65 mm: 25 kg; 80 mm: 37 kg; 100 mm: 49 kg.
+Welding two sections into a 6 m pipe does not change this assumed combined mass.
+The inconsistent 65 mm / 105 m photo entry is calculated as 875 kg, not 825 kg.
+There is no source weight for 150 mm column; it is explicitly unsupported.
+
+Pump mass is entered separately, initially zero with a missing-mass warning.
+The filled total includes water using the full column's internal annulus
+and water density 1000 kg/m³. Water volume always uses the installation column
+diameter from the sidebar; there is no separate diameter override.
+Photo shaft diameters are 13/16/19/22/22 mm respectively.
+These shaft assumptions do not change the hydraulic model. Pump water,
+fitting displacement, other accessories, buoyancy and dynamic loads are excluded.
+Results are mass estimates, not certified lifting loads or equipment ratings.
+
 ## Run locally
 
 Use Python 3.12 or newer. Extract the complete folder and open a terminal inside it:
@@ -50,7 +97,7 @@ The notebook is already executed with an example installation. Edit its installa
 
 ## Operator workflow
 
-New sessions default to **L/s**, **WA50-2** in planning, field checks and source inspection, and four test yields of **3, 4, 6 and 8 L/s**. Saved setups and subsequent user selections override these defaults. Older setups without a flow-unit setting use L/s.
+New sessions default to **L/s**, **WA50-2** in planning, field checks and source inspection, and four test yields of **3, 4, 6 and 8 L/s**. In **Pump-shaft RPM** input mode, the first four steps default to **300, 500, 700 and 950 RPM**, including when additional steps are enabled. Saved setups and subsequent user selections override these defaults. Older setups without a flow-unit setting use L/s.
 
 1. Enter project, borehole clearance, installation depth, column and layflat sizes, route length, and discharge elevation difference. Optional terrain lookup estimates the two endpoint elevations; verify small differences on site.
 2. Enter four planned yields, or enable up to 24 steps. Each step has a pumping water level. The default design lift remains the full installation depth; switch lift assumption to use the individual levels.
@@ -64,15 +111,35 @@ New sessions default to **L/s**, **WA50-2** in planning, field checks and source
 
 ### Google Maps and phone location (no API key)
 
-Open **Terrain & location**, switch from **Manual elevation** to **Google Maps / phone location**, and set the borehole and outlet pins. Open Google Maps using the provided links; right-click (or long-press on a phone) to copy a pin's latitude/longitude, or paste a full pin link containing `q=`, `query=`, or `!3d...!4d...` coordinates. Shortened links and map-centre-only URLs are rejected explicitly: open the link in Google Maps and copy the actual pin coordinates. No Google API key or billing is needed; there is no embedded Google map.
+Open **Terrain & location** and toggle between **Manual elevation**, **Google Maps pins / coordinates**, and **Interactive map picker** (the default for new sessions, including phone GPS). All location modes share the same borehole and outlet points, retained while switching modes (including via Manual elevation). The former Phone GPS mode migrates to Interactive map picker.
 
-Choose **Point to set**, then **Use my current location** to request that device's browser location. This is opt-in, requires browser permission and HTTPS (or localhost), and reports the accuracy estimate. To use a phone's location, open the deployed app on that phone. Permission denial, unavailable location and timeouts are shown explicitly; manual pin entry always remains available.
+**Interactive map picker** displays the satellite map automatically. Choose **Point to set** (Borehole or Outlet), pan/zoom to the site, and press **Set point on map** beside the dropdown to enable one click or tap to place that pin. Selecting a point alone does not enable placement; changing the selection cancels any pending placement. The point coordinates appear as read-only text below the map, and the connecting distance updates immediately; the current map centre and zoom are retained when enabling placement and after placing a pin. Map-picked points clear previous GPS accuracy for that point. Elevation still requires an explicit lookup and application; picking a pin does not overwrite installation elevation or hose length.
 
-Only **Look up terrain elevations** sends the two coordinate pairs to Open Topo Data. Apply the resulting elevation difference explicitly; changing either coordinate disables the old result until a new lookup. Terrain is approximate 90 m data, not a survey, and does not calculate route length or route high points. A fresh location does not silently overwrite the installation elevation.
+In Google Maps mode, right-click (or long-press on a phone) to copy a pin's latitude/longitude, with or without parentheses, or paste a full pin link containing `q=`, `query=`, or `!3d...!4d...` coordinates. Use the corresponding pin button to apply the entry; there are no duplicate latitude/longitude number widgets. An example coordinate format appears only as placeholder text inside the borehole and outlet pin-entry boxes; it does not populate either point. Shortened links and map-centre-only URLs are rejected explicitly: open the link in Google Maps and copy the actual pin coordinates.
+
+In Interactive map picker, choose **Point to set**, then **Use phone GPS** beside **Set point on map**. Both buttons use the same point selection. GPS requests that device's browser location only when pressed, requires permission and HTTPS (or localhost), and stores the reported accuracy separately for each point. A successful GPS fix cancels pending map placement and updates the pin and accuracy circle. To use a phone's location, open the deployed app on that phone. Permission denial, unavailable location and timeouts are shown explicitly. Editing a point manually or applying a pin clears that point's old GPS accuracy so it cannot be shown around an unrelated location.
+
+Click **Display points on satellite map** for an interactive inset showing labelled borehole/outlet pins whose tips mark the exact coordinates, with GPS accuracy circles (radius in metres) where GPS data is available. It fits both points and their circles, offers zoom/pan and a metric scale, and updates when coordinates change. **Hide satellite map** closes it. This is a no-key **Esri World Imagery satellite map with place/boundary labels**, not Google imagery, as selected for this implementation. No Google API key or billing is needed. The map loads Leaflet 1.9.4 from unpkg and public Esri tiles only after display is requested; tile requests reveal the viewed area to the provider. Internet/CDN/tile availability and provider terms apply; attribution remains visible. Loading failures are reported within the map. The accuracy circles are browser-reported uncertainty, not surveyed boundaries.
+
+The map connects the two pins with a thin (2 px) dark-blue dashed line over a 4 px white backing at 70% opacity, and a permanent straight-line distance label in metres. Distance uses Leaflet's spherical Earth calculation and updates with the points. It is not a road route, terrain-following distance or measured hose length, and does not overwrite the sidebar layflat length.
+
+Only **Look up terrain elevations** sends the two coordinate pairs to Open Topo Data's SRTM30m endpoint. Apply the resulting elevation difference explicitly; changing either coordinate disables the old result until a new lookup. Terrain has approximately 30 m grid spacing, not 30 m vertical accuracy; it is not a survey and does not calculate route length or route high points. A fresh location does not silently overwrite the installation elevation.
 
 ### Selected-engine limit on performance curves
 
-Both planning and field-check performance displays include a **red dashed horizontal line** on the absorbed-kW panel and a corresponding **red dashed equal-power boundary** on the yield/head panel. Usable pump power = selected engine continuous kW × available-power fraction × transmission efficiency − additional shaft/bearing loss. The diesel sizing margin is deliberately excluded from this physical power limit; minimum-engine recommendations still include it. Angle-drive limits remain separate.
+Both planning and field-check performance displays default to **two red dashed horizontal limits** on the absorbed-kW panel and corresponding **equal-power boundaries** on the yield/head panel. These show the operator-provided lower/upper available-power fractions for engines in different states of wear:
+
+| Engine | Lower fraction | Upper fraction |
+|---|---:|---:|
+| F3L912 | 0.60 | 0.66 |
+| F4L912 | 0.60 | 0.68 |
+| F5L912 | 0.65 | 0.70 |
+| F6L912 | 0.65 | 0.70 |
+| F6L413F | 0.65 | 0.75 |
+
+Moving **Available engine power fraction** replaces both limits with one custom limit in both views, including Simplified mode. Other input changes do not activate manual mode. Switching engines updates the range automatically while in range mode; a manual fraction remains manual when switching engines. **Use engine wear range** returns to the selected engine's defaults.
+
+Usable pump power = selected engine continuous kW × available-power fraction × transmission efficiency − additional shaft/bearing loss. In range mode, warnings use the selected engine's **lower fraction** conservatively, and minimum-engine recommendations use each candidate engine's own lower fraction. In manual mode, the custom fraction applies to all candidates. Crossing the lower limit therefore warns even if the upper limit is not exceeded. The diesel sizing margin is deliberately excluded from the plotted physical power limits; minimum-engine recommendations still include it. Angle-drive limits remain separate. Where a power boundary falls outside published curves, the plot reports it rather than extrapolating.
 
 The flow boundary solves the existing piecewise-linear power/RPM model at each head, then uses that RPM on the flow curve. It is drawn only within overlapping published head/RPM domains, with the existing low-speed zero-anchor convention. Flow display bounds expand if needed to show a supported engine boundary. No upper-speed or missing power curves are invented (notably WA110-2 above 960 RPM). If available engine power exceeds every published power curve, the upper panel explicitly reports that there is no equal-power boundary; the lower limit line remains visible by expanding the power axis. Negative available power means mechanical losses alone exceed engine availability.
 
@@ -90,7 +157,7 @@ The included pumps are positive-displacement pumps. Flow and power use piecewise
 
 Hydraulic kW is distinct from pump absorbed kW. Required engine output = (pump absorbed kW + additional mechanical loss) / transmission efficiency × sizing factor. Continuous ratings at 2300 engine RPM are F3L912 **36 kW**, F4L912 **49 kW**, F5L912 **61 kW**, F6L912 **74 kW**, and user-confirmed F6L413F (V6) **102 kW**. These are not ratings at arbitrary engine speeds. The minimum recommendation is the smallest engine whose rating × available fraction meets the peak requirement over every step. The installed-engine selector sets the red usable-power limit and operating-point warnings, without making an engine-only rejection. Angle-drive power/RPM checks remain active. Historical V6 references now identify F6L413F, not F6L912.
 
-Default transmission efficiency is 90%, sizing factor 1.33 and available-power fraction 90%. These are editable assumptions, not measured losses or automatic altitude correction. The default angle drive is 60 HP with a 1100 pump-RPM cap. Confirm actual drive limits. Starting torque and rod mechanical design are not certified. Saved setups and Excel exports record the installed engine. Older setups discard obsolete engine-speed settings, report default F3L912 metadata if missing, and migrate F6L413FW to the confirmed F6L413F name.
+Default transmission efficiency is 90% and sizing factor 1.33. The available-power fraction control ranges from 40% to 75% and initially displays the engine wear range's lower bound; moving it enables the single custom limit. Saved setups outside that range report a restore error instead of silently changing the fraction. These are editable assumptions, not measured losses or automatic altitude correction. The default angle drive is 60 HP with a 1100 pump-RPM cap. Confirm actual drive limits. Starting torque and rod mechanical design are not certified. Saved setups retain range/manual mode; Excel exports record the mode and both fractions. Older setups without a mode restore their saved fraction as a manual limit. Older setups also discard obsolete engine-speed settings, report default F3L912 metadata if missing, and migrate F6L413FW to the confirmed F6L413F name.
 
 ## Data review and limitations
 
@@ -106,7 +173,7 @@ In the sidebar, **Diesel drive settings > Advanced settings** expands the transm
 - The old AB quick chart retains its reference depths, columns and hose arrangements. Its engine colours are historical guidance, not a replacement for power calculations. The V6 model is confirmed as F6L413F.
 - The manual example contains an arithmetic error: 26 m/100 m × 60 m = 15.6 m, not 43 m; using its stated inputs the total is 96.6 m, not 124 m. The software uses the corrected arithmetic, with its chosen friction sources.
 - No automatic 10% pump limit overrun is permitted. The configurable field comparison tolerance describes a measurement comparison only; it does not raise operating limits or diagnose the cause of poor performance.
-- Terrain lookup uses Open Topo Data SRTM90m, depends on internet availability and may be inaccurate for small height differences. Manual entry always works. Endpoint elevations do not determine hose route length or route high points.
+- Terrain lookup uses Open Topo Data SRTM30m, depends on internet availability and may be inaccurate for small height differences. Manual entry always works. Endpoint elevations do not determine hose route length or route high points.
 
 ## Sources
 

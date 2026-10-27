@@ -174,15 +174,25 @@ class Drive:
     transmission_efficiency:float=.90
     extra_shaft_kw:float=0
     sizing_margin:float=1.33
-    engine_derating:float=.90
+    engine_derating:float=.50
     engine_model:str='F3L912'
+    engine_fraction_manual:bool=True
     def validate(self):
         for key,val in asdict(self).items():
-            if key!='engine_model':finite(val,key)
+            if key not in ('engine_model','engine_fraction_manual'):finite(val,key)
+        if not isinstance(self.engine_fraction_manual,bool):raise ValueError('Invalid engine power fraction mode')
         if not 0<self.transmission_efficiency<=1 or not 0<self.engine_derating<=1:raise ValueError('Efficiency/availability must be between 0 and 1')
         if self.sizing_margin<1 or self.extra_shaft_kw<0 or self.pump_rpm_limit<=0 or self.drive_rating_kw<=0:raise ValueError('Invalid drive settings')
         if self.engine_model not in ENGINES:raise ValueError('Unknown installed engine model')
         return self
+
+ENGINE_POWER_FRACTIONS = {
+    'F3L912':(.60,.66),
+    'F4L912':(.60,.68),
+    'F5L912':(.65,.70),
+    'F6L912':(.65,.70),
+    'F6L413F':(.65,.75),
+}
 
 # User-confirmed continuous ratings at 2300 engine RPM.
 ENGINES={'F3L912':36.,'F4L912':49.,'F5L912':61.,'F6L912':74.,'F6L413F':102.}
@@ -248,7 +258,8 @@ def engine_options(required_kw,drive):
     nonnegative(required_kw,'Required engine power')
     d=drive.validate();out=[]
     for name,gross in ENGINES.items():
-        net=gross*d.engine_derating
+        fraction=d.engine_derating if d.engine_fraction_manual else ENGINE_POWER_FRACTIONS[name][0]
+        net=gross*fraction
         out.append({'engine':name,'continuous_kw':gross,'available_kw':net,'required_kw':required_kw,'passes':net>=required_kw,'installed':name==d.engine_model})
     return out
 
@@ -311,9 +322,9 @@ def terrain_elevations(lat1,lon1,lat2,lon2):
     for lat,lon in [(lat1,lon1),(lat2,lon2)]:
         finite(lat,'Latitude');finite(lon,'Longitude')
         if not -60<=lat<=60 or not -180<=lon<=180:raise ValueError('Coordinates outside SRTM coverage')
-    r=requests.get('https://api.opentopodata.org/v1/srtm90m',params={'locations':f'{lat1},{lon1}|{lat2},{lon2}'},timeout=12)
+    r=requests.get('https://api.opentopodata.org/v1/srtm30m',params={'locations':f'{lat1},{lon1}|{lat2},{lon2}'},timeout=12)
     r.raise_for_status();d=r.json()
     if d.get('status')!='OK' or len(d.get('results',[]))!=2:raise ValueError('Elevation service could not resolve both points')
     z=[v['elevation'] for v in d['results']]
     if any(v is None or not math.isfinite(v) for v in z):raise ValueError('No terrain elevation for one or both coordinates')
-    return {'borehole_elevation_m':z[0],'outlet_elevation_m':z[1],'difference_m':z[1]-z[0],'dataset':'SRTM90m / Open Topo Data'}
+    return {'borehole_elevation_m':z[0],'outlet_elevation_m':z[1],'difference_m':z[1]-z[0],'dataset':'SRTM30m / Open Topo Data'}

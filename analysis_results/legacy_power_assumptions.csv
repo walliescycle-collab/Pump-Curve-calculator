@@ -1,0 +1,16 @@
+assumption,value
+Purpose,"Pump/engine duty requirements and implied minimum available fractions, not measured maximum engine output."
+Head,Static lift = installation depth; zero outlet elevation; full-depth column friction plus 100 m layflat friction.
+Layflat,"50 mm column uses 80 mm hose; 65/80/100 mm columns use 100 mm hose, per photo footer."
+GW9602,150 m static lift plus listed column and hose friction. No head extrapolation; unavailable cases retained.
+Engine conversion,Engine required kW = pump absorbed kW / 0.90. No extra mechanical loss or sizing margin.
+Engine ratings,"{'F3L912': 36.0, 'F4L912': 49.0, 'F5L912': 61.0, 'F6L912': 74.0, 'F6L413F': 102.0}"
+Dual cells,Non-italic = small drive; italic = large drive. Both use the cell engine colour. White italic entries use F3L912 large drive.
+Single cells,"Drive follows colour legend: white small drive, coloured cells large (60 HP) drive."
+18 L/s,Parenthesised 18 L/s cases retained separately but not advised and excluded from summaries.
+Curve limits,No upper-RPM or head extrapolation. Out-of-domain results remain blank with an explicit error.
+Summary,"Maximum of eligible required power is a lower bound only, not a recommended availability setting. Includes duties potentially limited by flow/RPM."
+Small drive,Power rating not supplied. Only its 1100 RPM cap can be checked; small-drive power capacity remains unverified.
+Data quality,Built-in manual graph digitisation; approximate curve readings. DW15 has no built-in curve.
+Photo correction,"WA50-2, 80 mm column, 100 m depth, italic yield transcribed as 11.1 L/s. Existing app data unchanged."
+Photo correction 2,"GW1302, 100 mm column, 120 m depth, italic yield transcribed as 5.8 L/s rather than existing 5.7."

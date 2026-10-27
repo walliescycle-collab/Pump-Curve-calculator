@@ -8,6 +8,7 @@ from hydraulics import load_pumps,Installation,system_head
 from plots import performance_plot,head_contribution_plot,rpm_comparison_plot,apply_theme
 from hydraulics import compare_actual,curve_value
 from hydraulics import Drive,engine_pump_limit_kw
+from hydraulics import ENGINE_POWER_FRACTIONS, ENGINES
 
 @pytest.mark.parametrize('name',list(load_pumps()))
 def test_source_performance_layout_and_knots(name):
@@ -131,6 +132,37 @@ def test_engine_line_visible_above_source_power_axis():
     fig=performance_plot(pump,drive=drive)
     assert fig.layout.yaxis2.range[1]>engine_pump_limit_kw(drive)>pump['source_chart']['power']['range'][1]
     assert any('no equal-power boundary' in annotation.text for annotation in fig.layout.annotations)
+
+@pytest.mark.parametrize('engine',list(ENGINE_POWER_FRACTIONS))
+@pytest.mark.parametrize('unit',['L/s','m³/h'])
+@pytest.mark.parametrize('theme',['light','dark'])
+def test_engine_wear_range_boundaries(engine,unit,theme):
+    pump=load_pumps()['WA50-2']
+    drive=Drive(engine_model=engine,extra_shaft_kw=1,transmission_efficiency=.85)
+    fractions=ENGINE_POWER_FRACTIONS[engine]
+    fig=apply_theme(performance_plot(pump,drive=drive,flow_unit=unit,
+        engine_fraction_range=fractions),theme)
+    lines=[shape for shape in fig.layout.shapes if shape.yref=='y2']
+    boundaries=[trace for trace in fig.data if trace.name.startswith('Engine limit')]
+    assert len(lines)==len(boundaries)==2
+    for line,trace,fraction in zip(lines,boundaries,fractions):
+        limit=ENGINES[engine]*fraction*.85-1
+        assert line.y0==line.y1==pytest.approx(limit)
+        assert line.line.dash=='dash'
+        assert fig.layout.yaxis2.range[0]<=limit<fig.layout.yaxis2.range[1]
+        for head,q,rpm in zip(trace.x,trace.y,trace.customdata):
+            if q is not None:
+                assert curve_value(pump,head,rpm,'power')==pytest.approx(limit)
+                assert q==pytest.approx(curve_value(pump,head,rpm)*(3.6 if unit=='m³/h' else 1))
+    assert 'Lower wear limit' in boundaries[0].name
+    assert 'Upper wear limit' in boundaries[1].name
+
+def test_engine_wear_range_requires_valid_drive_and_bounds():
+    pump=load_pumps()['WA50-2']
+    with pytest.raises(ValueError,match='Engine fraction range'):
+        performance_plot(pump,engine_fraction_range=(.6,.66))
+    with pytest.raises(ValueError,match='Engine fraction range'):
+        performance_plot(pump,drive=Drive(),engine_fraction_range=(.7,.6))
 
 def test_low_engine_boundary_and_field_power_marker_visible():
     pump=load_pumps()['BP16M']
